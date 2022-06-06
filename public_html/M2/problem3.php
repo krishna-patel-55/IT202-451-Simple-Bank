@@ -9,7 +9,12 @@ function bePositive($arr) {
     echo "<br>Positive output:<br>";
     //TODO use echo to output all of the values as positive (even if they were originally positive)
     for($i = 0; $i <= count($arr)-1; $i++){
-        echo abs($arr[$i]);
+    	$type = gettype($arr[$i]);
+        $arr[$i] = abs($arr[$i]);
+        if($type == "string"){
+        	$arr[$i]=(string)$arr[$i];
+        }
+        echo $arr[$i];
         echo "<br>";
     }
 
