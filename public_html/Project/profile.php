@@ -144,7 +144,7 @@ $username = get_username();
                 isValid = false;
             }
         }
-        if(pw => 8 && con == ""){
+        if(con == ""){
             flash("Please confirm password", "warning");
             isValid = false;
         }
