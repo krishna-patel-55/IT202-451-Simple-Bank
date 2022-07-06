@@ -1,0 +1,70 @@
+.alert-success {
+    background-color: green
+}
+
+.alert-warning {
+    background-color: yellow;
+}
+
+.alert-danger {
+    background-color: red;
+}
+
+.alert-info {
+    background-color: teal;
+}
+/*
+nav li{display: inline; background-color: rebeccapurple;}
+nav li a{color: hotpink}
+input{border-radius: 50%;}
+body{
+    background-color: hotpink;
+    color: rgb(153, 0, 153);
+
+}*/
+body{
+    background-color: #ADC0D0;
+}
+nav {
+    background-color: #638198;
+}
+nav ul {
+    list-style: none;
+    overflow: hidden;
+    margin: 0;
+    padding: 1;
+}
+nav li {
+    float: left;
+    margin-left: 10px;
+}
+nav a {
+    display: block;
+    padding: 10px;
+    padding: 12px 14px;
+    border: 1px solid #638198;
+}
+nav a:hover {
+      background-color: #3D5160;
+    color: whitesmoke;
+    border: 1px solid white;
+}
+h1, nav a {
+    text-transform: capitalize;
+    color: #152533;
+    font-family: "Monaco", monospace;
+    font-weight: bold;
+}
+h1 {
+    text-align: center;
+    color: #152533;
+    font-family: "Monaco", monospace;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+form {
+    text-align: center;
+}
+nav a:link {
+    text-decoration-line: none;
+}
