@@ -63,8 +63,8 @@ require(__DIR__ . "/../../partials/nav.php");
                     $hash = $user["password"];
                     unset($user["password"]);
                     if (password_verify($password, $hash)) {
-                        flash("Welcome $email");
                         $_SESSION["user"] = $user;
+                        flash("Welcome, " . get_username());
                         die(header("Location: home.php"));
                     } else {
                         flash("Invalid password");
