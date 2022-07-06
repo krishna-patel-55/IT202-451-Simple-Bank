@@ -5,7 +5,7 @@ reset_session();
 <form onsubmit="return validate(this)" method="POST">
     <div>
         <label for="email">Email</label>
-        <input type="email" name="email" required />
+        <input type="email" name="email" />
     </div>
     <div>
         <label for="username">Username</label>
@@ -25,8 +25,46 @@ reset_session();
     function validate(form) {
         //TODO 1: implement JavaScript validation
         //ensure it returns false for an error and true for success
-
-        return true;
+        let is_valid = true;
+        let email = form.email.value;
+        let username = form.username.value;
+        let password = form.password.value;
+        let confirm = form.confirm.value;
+        var emailpattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+        var usernamepattern = /^[a-z0-9_-]{3,16}$/; 
+        if(email == ""){
+            flash("Email was not entered.", "warning");
+            is_valid = false;
+        }
+        if(!email.test(emailpattern)){
+            flash("Invalid email address.", "warning");
+            is_valid = false;
+        }
+        if(username == ""){
+            flash("Username was not entered.", "warning");
+            is_valid = false;
+        }
+        if(!username.test(usernamepattern)){
+            flash("Invalid username.", "warning");
+            is_valid = false;
+        }
+        if(password == ""){
+            flash("Password was not entered.", "warning");
+            is_valid = false;
+        }
+        if(password.length < 8){
+            flash("Password must be 8 or more characters.", "warning");
+            is_valid = false;
+        }
+        if(password => 8 && confirm == ""){
+            flash("Please confirm password", "warning");
+            is_valid = false;
+        }
+        if(password => 8 && password !== confirm){
+            flash("Passwords do not match.", "warning");
+            is_valid = false;
+        }
+        return is_valid;
     }
 </script>
 <?php
