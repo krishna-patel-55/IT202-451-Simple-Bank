@@ -13,20 +13,12 @@
 .alert-info {
     background-color: teal;
 }
-/*
-nav li{display: inline; background-color: rebeccapurple;}
-nav li a{color: hotpink}
-input{border-radius: 50%;}
-body{
-    background-color: hotpink;
-    color: rgb(153, 0, 153);
 
-}*/
 body{
     background-color: #ADC0D0;
 }
 nav {
-    background-color: #638198;
+    background-color: #4085bf;
 }
 nav ul {
     list-style: none;
@@ -42,18 +34,19 @@ nav a {
     display: block;
     padding: 10px;
     padding: 12px 14px;
-    border: 1px solid #638198;
+    border: 1px solid #4085bf;
+    font-weight: bold;
+    font-family: "Monaco", monospace;
+    text-transform: uppercase;
+    color: #152533;
 }
 nav a:hover {
-      background-color: #3D5160;
+    background-color: #2d5d86;
     color: whitesmoke;
-    border: 1px solid white;
+    border: 1px solid #2d5d86;
 }
-h1, nav a {
-    text-transform: capitalize;
-    color: #152533;
-    font-family: "Monaco", monospace;
-    font-weight: bold;
+nav a:link {
+    text-decoration-line: none;
 }
 h1 {
     text-align: center;
@@ -64,7 +57,33 @@ h1 {
 }
 form {
     text-align: center;
+    color: #152533;
+    font-family: "Monaco", monospace;
+    font-weight: bold;
 }
-nav a:link {
-    text-decoration-line: none;
+
+input[type="submit"]{
+    margin-top: 5%;
+    border-radius: 5px;
+    font-family: "Monaco", monospace;
+    font-weight: bold;
+}
+input[type="submit"]:hover{
+    background-color: #2d5d86;
+}
+table, thead tr th, tbody tr td{
+    margin: auto;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+table thead tr th{
+    background-color: #4085bf ;
+    color: black;
+    font-family: "Monaco", monospace;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+table tbody tr td{
+    color: #152533;
+    font-family: "Monaco", monospace;
 }

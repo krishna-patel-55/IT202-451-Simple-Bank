@@ -85,6 +85,7 @@ if (isset($_POST["save"])) {
 $email = get_user_email();
 $username = get_username();
 ?>
+<h1>Profile</h1>
 <form method="POST" onsubmit="return validate(this);">
     <div class="mb-3">
         <label for="email">Email</label>
@@ -113,37 +114,35 @@ $username = get_username();
 
 <script>
     function validate(form) {
-        let pw = form.newPassword.value;
         let email = form.email.value;
         let username = form.username.value;
+        let pw = form.newPassword.value;
         let con = form.confirmPassword.value;
         var emailpattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
         var usernamepattern = /^[a-z0-9_-]{3,16}$/; 
         let isValid = true;
         //TODO add other client side validation....
         if(email == ""){
-            flash("Email was not entered.", "warning");
+            flash("Please enter your email address.", "warning");
             isValid = false;
         }
-        if(!email.test(emailpattern)){
-            flash("Invalid email address.", "warning");
+        if(!emailpattern.test(email)){
+            flash("You've entered an invalid email address.", "warning");
             isValid = false;
         }
         if(username == ""){
-            flash("Username was not entered.", "warning");
+            flash("Please enter a username.", "warning");
             isValid = false;
         }
-        if(!username.test(usernamepattern)){
+        if(!usernamepattern.test(username)){
             flash("Invalid username.", "warning");
             isValid = false;
         }
-        if(pw == ""){
-            flash("Password was not entered.", "warning");
-            isValid = false;
-        }
-        if(pw.length < 8){
-            flash("Password must be 8 or more characters.", "warning");
-            isValid = false;
+        if(pw != ""){
+            if(pw.length < 8){
+                flash("Password must be 8 or more characters.", "warning");
+                isValid = false;
+            }
         }
         if(pw => 8 && con == ""){
             flash("Please confirm password", "warning");
