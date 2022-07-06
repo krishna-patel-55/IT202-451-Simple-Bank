@@ -114,10 +114,41 @@ $username = get_username();
 <script>
     function validate(form) {
         let pw = form.newPassword.value;
+        let email = form.email.value;
+        let username = form.username.value;
         let con = form.confirmPassword.value;
+        var emailpattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+        var usernamepattern = /^[a-z0-9_-]{3,16}$/; 
         let isValid = true;
         //TODO add other client side validation....
-
+        if(email == ""){
+            flash("Email was not entered.", "warning");
+            isValid = false;
+        }
+        if(!email.test(emailpattern)){
+            flash("Invalid email address.", "warning");
+            isValid = false;
+        }
+        if(username == ""){
+            flash("Username was not entered.", "warning");
+            isValid = false;
+        }
+        if(!username.test(usernamepattern)){
+            flash("Invalid username.", "warning");
+            isValid = false;
+        }
+        if(pw == ""){
+            flash("Password was not entered.", "warning");
+            isValid = false;
+        }
+        if(pw.length < 8){
+            flash("Password must be 8 or more characters.", "warning");
+            isValid = false;
+        }
+        if(pw => 8 && con == ""){
+            flash("Please confirm password", "warning");
+            isValid = false;
+        }
         //example of using flash via javascript
         //find the flash container, create a new element, appendChild
         if (pw !== con) {
