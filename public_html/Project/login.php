@@ -1,6 +1,7 @@
 <?php
 require(__DIR__ . "/../../partials/nav.php");
 ?>
+<h1>Login</h1>
 <form onsubmit="return validate(this)" method="POST">
     <div>
         <label for="email">Email/Username</label>
@@ -16,32 +17,36 @@ require(__DIR__ . "/../../partials/nav.php");
     function validate(form) {
         //TODO 1: implement JavaScript validation
         //ensure it returns false for an error and true for success
-        let is_valid = true;
+        let isValid = true;
         let email = form.email.value;
         let password = form.password.value;
         var emailpattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
         var usernamepattern = /^[a-z0-9_-]{3,16}$/; 
         if(email == ""){
-            flash("Email/Username was not entered.", "warning");
-            is_valid = false;
+            flash("Please enter your Email/Username.", "warning");
+            isValid = false;
         }
         if(email.includes('@')){
-            if(!email.test(emailpattern)){
-                flash("Invalid email address.", "warning");
-                is_valid = false;
+            if(!emailpattern.test(email)){
+                flash("You've entered an invalid email address.", "warning");
+                isValid = false;
             }
         }
         else{
-            if(!username.test(usernamepattern)){
-                flash("Invalid username.", "warning");
-                is_valid = false;
+            if(!usernamepattern.test(username)){
+                flash("You've entered an invalid username.", "warning");
+                isValid = false;
             }
         }
         if(password == ""){
-            flash("Password was not entered.", "warning");
-            is_valid = false;
+            flash("Please enter your password.", "warning");
+            isValid = false;
         }
-        return is_valid;
+        if(pw.length < 8){
+            flash("Invalid password.", "warning");
+            isValid = false;
+        }
+        return isValid;
     }
 </script>
 <?php
