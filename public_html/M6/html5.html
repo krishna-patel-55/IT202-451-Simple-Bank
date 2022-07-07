@@ -212,7 +212,7 @@
                     }
                 }
 //-KP55(07/07/2022)-------->COLLIDE WITH ENEMY DEDUCTS SCORE BY 5 POINTS
-                if(score >= 15){
+                if(score >= 20){
                     if (isWithin(enemyX, x, x + sideLength) || isWithin(enemyX + enemyLength, x, x + sideLength)) { // X
                         if (isWithin(enemyY, y, y + sideLength) || isWithin(enemyY + enemyLength, y, y + sideLength)) { // Y
                             // Respawn the enemy
@@ -228,8 +228,8 @@
                 // Draw the target 
                 context.fillStyle = '#00FF00';
                 context.fillRect(targetX, targetY, targetLength, targetLength);
-//-KP55(07/07/2022)-------->DRAW ENEMY IF 15 POINTS OBTAINED              
-                if(score >= 15){
+//-KP55(07/07/2022)-------->DRAW ENEMY IF 20 POINTS OBTAINED              
+                if(score >= 20){
                     context.fillStyle = '#1c1c1c';
                     context.fillRect(enemyX, enemyY, enemyLength, enemyLength);
                 }
