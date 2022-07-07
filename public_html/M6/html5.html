@@ -40,7 +40,7 @@
             var targetY = 0;
             var targetLength = 25;
 
-//-KP55---->PROPERTIES FOR THE ENEMY SQUARE
+//-KP55(07/07/2022)---->PROPERTIES FOR THE ENEMY SQUARE
             var enemyX = 0;
             var enemyY = 0;
             var enemyLength = 45;
@@ -51,7 +51,7 @@
             }
 
             // Countdown timer (in seconds)
-//-KP55---->CUT INITIAL TIME TO START AT 15 SECONDS
+//-KP55(07/06/2022)---->CUT INITIAL TIME TO START AT 15 SECONDS
             var countdown = 15;
             // ID to track the setTimeout
             var id = null;
@@ -101,7 +101,8 @@
                 context.fillText('Collect the Square!', canvas.width / 2, canvas.height / 4);
                 context.font = '24px Arial';
                 context.fillText('Click to Start', canvas.width / 2, (canvas.height / 10) * 4);
-                context.font = '14px Arial'
+                context.font = '14px Arial';
+//-KP55(07/07/2022)---->UPDATED AND ADDED INSTRUCTIONS
                 context.fillText('Use the arrow keys to move', canvas.width / 2, canvas.height / 2);
                 context.font = '14px Arial'
                 context.fillText('Collect the green target squares for points ', canvas.width / 2, (canvas.height / 10) * 6);
@@ -139,12 +140,12 @@
                 context.font = '24px Arial';
                 context.textAlign = 'center';
                 context.fillText('Final Score: ' + score, canvas.width / 2, canvas.height / 3);
-//-KP55-------->ADDED FUNCTIONALITY TO GO BACK TO MENU TO RESTART
+//-KP55(07/06/2022)-------->ADDED FUNCTIONALITY TO GO BACK TO MENU TO RESTART
                 context.font = '18px Arial';
                 context.fillText('Click to Menu', canvas.width /2, canvas.height / 2);
                 canvas.addEventListener('click', restartGame);
             }
-//-KP55---->FUNCTION TO RESTART
+//-KP55(07/06/2022)---->FUNCTION TO RESTART
             function restartGame(){
                 location.reload();
             }
@@ -153,7 +154,7 @@
                 targetX = Math.round(Math.random() * canvas.width - targetLength);
                 targetY = Math.round(Math.random() * canvas.height - targetLength)
             }
-//-KP55---->MOVE THE ENEMY SQUARE TO A RANDOM POSITION
+//-KP55(07/07/2022)---->MOVE THE ENEMY SQUARE TO A RANDOM POSITION
             function moveEnemy(){
                 enemyX = Math.round(Math.random() * canvas.width - enemyLength);
                 enemyY = Math.round(Math.random() * canvas.height - enemyLength)
@@ -200,17 +201,17 @@
                     moveTarget();
                     // Increase the score
                     score++;
-//-KP55------------>ADDS 15 SECONDS TO TIMER EVERY 10 POINTS IN TOTAL SCORE
+//-KP55(07/06/2022)------------>ADDS 15 SECONDS TO TIMER EVERY 10 POINTS IN TOTAL SCORE
                     if(score % 10 == 0 && score != 0) {
                         countdown += 15;
                     }
-//-KP55------------>ENTER ENEMY AT RANDOM START POINT WHEN 20 POINTS OBTAINED
+//-KP55(07/07/2022)------------>ENTER ENEMY AT RANDOM START POINT WHEN 20 POINTS OBTAINED
                     if(score == 20){
                         moveEnemy();
                     }
                     }
                 }
-//-KP55-------->COLLIDE WITH ENEMY DEDUCTS SCORE BY 5 POINTS
+//-KP55(07/07/2022)-------->COLLIDE WITH ENEMY DEDUCTS SCORE BY 5 POINTS
                 if(score >= 15){
                     if (isWithin(enemyX, x, x + sideLength) || isWithin(enemyX + enemyLength, x, x + sideLength)) { // X
                         if (isWithin(enemyY, y, y + sideLength) || isWithin(enemyY + enemyLength, y, y + sideLength)) { // Y
@@ -227,7 +228,7 @@
                 // Draw the target 
                 context.fillStyle = '#00FF00';
                 context.fillRect(targetX, targetY, targetLength, targetLength);
-//-KP55-------->DRAW ENEMY IF 15 POINTS OBTAINED              
+//-KP55(07/07/2022)-------->DRAW ENEMY IF 15 POINTS OBTAINED              
                 if(score >= 15){
                     context.fillStyle = '#1c1c1c';
                     context.fillRect(enemyX, enemyY, enemyLength, enemyLength);
