@@ -6,19 +6,19 @@ reset_session();
 <form onsubmit="return validate(this)" method="POST">
     <div>
         <label for="email">Email</label>
-        <input type="email" name="email" required />
+        <input type="email" id="em" name="email" value="<?php echo $_POST["email"] ?? ""; ?>" required />
     </div>
     <div>
         <label for="username">Username</label>
-        <input type="text" name="username" required maxlength="30" />
+        <input type="text" id="un" name="username" maxlength="30" value="<?php echo $_POST["username"] ?? ""; ?>" required />
     </div>
     <div>
         <label for="pw">Password</label>
-        <input type="password" id="pw" name="password" required minlength="8" />
+        <input type="password" id="pw" name="password" minlength="8" required />
     </div>
     <div>
         <label for="confirm">Confirm</label>
-        <input type="password" name="confirm" required minlength="8" />
+        <input type="password" id="con" name="confirm" minlength="8" required />
     </div>
     <input type="submit" value="Register" />
 </form>
@@ -27,31 +27,31 @@ reset_session();
         //TODO 1: implement JavaScript validation
         //ensure it returns false for an error and true for success
         let isValid = true;
-        let email = form.email.value;
-        let username = form.username.value;
+        let em = form.email.value;
+        let un = form.username.value;
         let pw = form.password.value;
         let con = form.confirm.value;
         var emailpattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
         var usernamepattern = /^[a-z0-9_-]{3,16}$/; 
-        if(email == ""){
+        if(em == ""){
             flash("Please enter your email address.", "warning");
             isValid = false;
         }
-        if(!emailpattern.test(email)){
+        if(!emailpattern.test(em)){
             flash("You've entered an invalid email address.", "warning");
             isValid =  false;
         }
-        if(username == ""){
+        if(un == ""){
             flash("Please enter a username.", "warning");
             isValid = false;
         }
-        if(!usernamepattern.test(username)){
+        if(!usernamepattern.test(un)){
             flash("You've entered an invalid username.", "warning");
             isValid = false;
         }
         if(pw == ""){
             flash("Please enter a password.", "warning");
-            isValid false;
+            isValid = false;
         }
         if(pw.length < 8){
             flash("Password must be 8 or more characters.", "warning");
@@ -61,7 +61,7 @@ reset_session();
             flash("Please confirm password", "warning");
             isValid = false;
         }
-        if(pw => 8 && pw !== con){
+        if(pw >= 8 && pw !== con){
             flash("Passwords do not match.", "warning");
             isValid = false;
         }
