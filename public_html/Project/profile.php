@@ -116,6 +116,7 @@ $username = get_username();
     function validate(form) {
         let email = form.email.value;
         let username = form.username.value;
+        let cpw = form.currentPassword.value;
         let pw = form.newPassword.value;
         let con = form.confirmPassword.value;
         var emailpattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
@@ -138,21 +139,31 @@ $username = get_username();
             flash("Invalid username.", "warning");
             isValid = false;
         }
-        if(pw != ""){
-            if(pw.length < 8){
-                flash("Password must be 8 or more characters.", "warning");
+        if(cpw == "" && pw !== "" ){
+            flash("Must enter current password to change.", "warning");
+            isValid = false;
+        }  
+        if(cpw !== ""){
+            if(pw !== "" ){
+                if(pw.length < 8){
+                    flash("Password must be 8 or more characters.", "warning");
+                    isValid = false;
+                }
+            }
+            if(con == ""){
+                flash("Please confirm password", "warning");
                 isValid = false;
             }
-        }
-        if(con == ""){
-            flash("Please confirm password", "warning");
-            isValid = false;
-        }
-        //example of using flash via javascript
-        //find the flash container, create a new element, appendChild
-        if (pw !== con) {
-            flash("Password and Confirm password must match", "warning");
-            isValid = false;
+            //example of using flash via javascript
+            //find the flash container, create a new element, appendChild
+            if (pw !== con) {
+                flash("Password and Confirm password must match", "warning");
+                isValid = false;
+            }
+            if (pw == cpw){
+                flash("Please use a new password", "warning");
+                isValid = false;
+            }
         }
         return isValid;
     }
