@@ -14,42 +14,42 @@
 ### Proposal Checklist and Evidence
 
 - Milestone 1
-    - [x] \(07/02/2022 of completion) User will be able to register a new account
+    - [x] \(07/02/2022) User will be able to register a new account
       -  Link to related .md file: [https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone1.md](https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone1.md)
-    - [x] \(07/02/2022 of completion) User will be able to login to their account (given they enter the correct credentials)
+    - [x] \(07/02/2022) User will be able to login to their account (given they enter the correct credentials)
       -  Link to related .md file: [https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone1.md](https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone1.md)
-    - [x] \(07/04/2022 of completion) User will be able to logout
+    - [x] \(07/04/2022) User will be able to logout
       -  Link to related .md file: [https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone1.md](https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone1.md)
-    - [x] \(07/04/2022 of completion) Basic security rules implemented
+    - [x] \(07/04/2022) Basic security rules implemented
       -  Link to related .md file: [https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone1.md](https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone1.md)
-    - [x] \(07/05/2022 of completion) Basic Roles implemented
+    - [x] \(07/05/2022) Basic Roles implemented
       -  Link to related .md file: [https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone1.md](https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone1.md)
-    - [x] \(07/06/2022 of completion) Site should have basic styles/theme applied; everything should be styled
+    - [x] \(07/06/2022) Site should have basic styles/theme applied; everything should be styled
       -  Link to related .md file: [https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone1.md](https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone1.md)
-    - [x] \(07/06/2022 of completion) Any output messages/errors should be “user friendly”
+    - [x] \(07/06/2022) Any output messages/errors should be “user friendly”
       -  Link to related .md file: [https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone1.md](https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone1.md)
-    - [x] \(07/04/2022 of completion) User will be able to see their profile
+    - [x] \(07/04/2022) User will be able to see their profile
       -  Link to related .md file: [https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone1.md](https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone1.md)
-    - [x] \(07/06/2022 of completion) User will be able to edit their profile
+    - [x] \(07/06/2022) User will be able to edit their profile
       -  Link to related .md file: [https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone1.md](https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone1.md)
       
 - Milestone 2
-    - [ ] \(mm/dd/yyyy of completion) Create the Accounts table:
+    - [ ] \(07/17/2022) Create the Accounts table:
       - (id, account_number [unique, always 12 characters], user_id, balance (default 0), account_type, created, modified)
         -  Link to related .md file: [Link Name](link url)
-    - [ ] \(mm/dd/yyyy of completion) Project setup steps:
+    - [ ] \(mm/dd/yyyy) Project setup steps:
       - Create these as initial setup scripts in the sql folder:
         - Create a system user if they don’t exist
         - Create a world account in the Accounts table created above
           -  Link to related .md file: [Link Name](link url)
-    - [ ] \(mm/dd/yyyy of completion) Create the Transactions table:
+    - [ ] \(mm/dd/yyyy) Create the Transactions table:
       - (id, account_src, account_dest, balance_change, transaction_type, memo, expected_total, created, modified) 
         -  Link to related .md file: [Link Name](link url)
-    - [ ] \(mm/dd/yyyy of completion) Dashboard page:
+    - [ ] \(mm/dd/yyyy) Dashboard page:
       - Will have links for Create Account, My Accounts, Deposit, Withdraw Transfer, Profile
         - Links that don’t have pages yet should just have href=”#”, you’ll update them later
           -  Link to related .md file: [Link Name](link url)
-    - [ ] \(mm/dd/yyyy of completion) User will be able to create a checking account:
+    - [ ] \(mm/dd/yyyy) User will be able to create a checking account:
       - System will generate a unique 12 character account number
         - Options (strike out the option you won’t do):
           - Option 1: Generate a random 12 digit/character value; must regenerate if a duplicate collision occurs
@@ -64,17 +64,17 @@
       - User will see user-friendly success message when account is created successfully
         - Redirect user to their Accounts page upon success
           -  Link to related .md file: [Link Name](link url)
-    - [ ] \(mm/dd/yyyy of completion) User will be able to list their accounts
+    - [ ] \(mm/dd/yyyy) User will be able to list their accounts
       - Limit results to 5 for now
       - Show account number, account type, modified, and balance
         -  Link to related .md file: [Link Name](link url)
-    - [ ] \(mm/dd/yyyy of completion) User will be able to click an account for more information
+    - [ ] \(mm/dd/yyyy) User will be able to click an account for more information
       - Show account number, account type, balance, opened/created date of the selected account (from Accounts table)
       - Show transaction history (from Transactions table)
         - For now limit results to 10 latest
         - Show the src/dest account numbers (not account id), the transaction type, the change in balance, when it occurred, expected total, and the memo
           -  Link to related .md file: [Link Name](link url)
-    - [ ] \(mm/dd/yyyy of completion) User will be able to deposit/withdraw from their account(s)
+    - [ ] \(mm/dd/yyyy) User will be able to deposit/withdraw from their account(s)
       - Clearly label this activity with a heading showing “External Transfer”
       - Form should include a dropdown of the current user’s accounts (as account_src)
          Account list should show account number and balance
