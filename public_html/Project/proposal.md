@@ -37,18 +37,18 @@
     - [x] \(07/17/2022) Create the Accounts table:
       - (id, account_number [unique, always 12 characters], user_id, balance (default 0), account_type, created, modified)
         -  Link to related .md file: [https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone2.md](https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone2.md)
-    - [ ] \(mm/dd/yyyy) Project setup steps:
+    - [x] \(07/17/2022) Project setup steps:
       - Create these as initial setup scripts in the sql folder:
         - Create a system user if they don’t exist
         - Create a world account in the Accounts table created above
-          -  Link to related .md file: [Link Name](link url)
-    - [ ] \(mm/dd/yyyy) Create the Transactions table:
+          -  Link to related .md file: [https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone2.md](https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone2.md)
+    - [x] \(07/17/2022) Create the Transactions table:
       - (id, account_src, account_dest, balance_change, transaction_type, memo, expected_total, created, modified) 
-        -  Link to related .md file: [Link Name](link url)
+        -  Link to related .md file: Link to related .md file: [https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone2.md](https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone2.md)
     - [ ] \(mm/dd/yyyy) Dashboard page:
       - Will have links for Create Account, My Accounts, Deposit, Withdraw Transfer, Profile
         - Links that don’t have pages yet should just have href=”#”, you’ll update them later
-          -  Link to related .md file: [Link Name](link url)
+          -  Link to related .md file: [https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone2.md](https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone2.md)
     - [ ] \(mm/dd/yyyy) User will be able to create a checking account:
       - System will generate a unique 12 character account number
         - Options (strike out the option you won’t do):
@@ -63,17 +63,17 @@
       - User will see user-friendly error messages when appropriate
       - User will see user-friendly success message when account is created successfully
         - Redirect user to their Accounts page upon success
-          -  Link to related .md file: [Link Name](link url)
+          -  Link to related .md file: [https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone2.md](https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone2.md)
     - [ ] \(mm/dd/yyyy) User will be able to list their accounts
       - Limit results to 5 for now
       - Show account number, account type, modified, and balance
-        -  Link to related .md file: [Link Name](link url)
+        -  Link to related .md file: [https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone2.md](https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone2.md)
     - [ ] \(mm/dd/yyyy) User will be able to click an account for more information
       - Show account number, account type, balance, opened/created date of the selected account (from Accounts table)
       - Show transaction history (from Transactions table)
         - For now limit results to 10 latest
         - Show the src/dest account numbers (not account id), the transaction type, the change in balance, when it occurred, expected total, and the memo
-          -  Link to related .md file: [Link Name](link url)
+          -  Link to related .md file: [https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone2.md](https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone2.md)
     - [ ] \(mm/dd/yyyy) User will be able to deposit/withdraw from their account(s)
       - Clearly label this activity with a heading showing “External Transfer”
       - Form should include a dropdown of the current user’s accounts (as account_src)
@@ -90,7 +90,7 @@
       - Transaction will be recorded with the type as “ext-transfer”
       - Each transaction is recorded as a transaction pair in the Transaction table
         - These will reflect in the transaction history page
-          -  Link to related .md file: [Link Name](link url)
+          -  Link to related .md file: [https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone2.md](https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone2.md)
 <!--
 - Milestone 3
   - (duplicate template here for Milestone 3 features)
