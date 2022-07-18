@@ -34,9 +34,9 @@
       -  Link to related .md file: [https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone1.md](https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone1.md)
       
 - Milestone 2
-    - [ ] \(07/17/2022) Create the Accounts table:
+    - [x] \(07/17/2022) Create the Accounts table:
       - (id, account_number [unique, always 12 characters], user_id, balance (default 0), account_type, created, modified)
-        -  Link to related .md file: [Link Name](link url)
+        -  Link to related .md file: [https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone2.md](https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone2.md)
     - [ ] \(mm/dd/yyyy) Project setup steps:
       - Create these as initial setup scripts in the sql folder:
         - Create a system user if they don’t exist
