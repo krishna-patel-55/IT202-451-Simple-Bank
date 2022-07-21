@@ -3,7 +3,7 @@ require_once(__DIR__ . "/../../partials/nav.php");
 is_logged_in(true);
 $uid = get_user_id();
 $db = getDB();
-$stmt = $db->prepare("SELECT account_number, balance, account_type, modified 
+$stmt = $db->prepare("SELECT id, account_number, balance, account_type, created, modified 
                     FROM Accounts 
                     WHERE user_id = :user_id 
                     ORDER BY modified desc LIMIT 5");
@@ -33,12 +33,22 @@ try {
                 </tr>
             <?php else : ?>
                 <?php foreach ($accounts as $account) : ?>
+                    <form method="POST" action="transaction_history.php">
                     <tr>
                         <td><?php se($account, "account_number"); ?></td>
                         <td><?php se($account, "account_type"); ?></td>
                         <td><?php se($account, "modified"); ?></td>
                         <td>$<?php se($account, "balance"); ?></td>
+                        <td>
+                            <input type="hidden" name="view_accId" value="<?php se($account, 'id'); ?>" />
+                            <input type="hidden" name="view_accCreated" value="<?php se($account, 'created'); ?>" />
+                            <input type="hidden" name="view_accNum" value="<?php se($account, "account_number"); ?>"/>
+                            <input type="hidden" name="view_accType" value="<?php se($account, "account_type"); ?>"/>
+                            <input type="hidden" name="view_accBal" value="<?php se($account, "balance"); ?>"/>
+                            <input class="btn btn-primary" type="submit" value="VIEW" />
+                        </td>
                     </tr>
+                    </form>
                 <?php endforeach; ?>
             <?php endif; ?>
         </tbody>

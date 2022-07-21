@@ -68,7 +68,7 @@
       - Limit results to 5 for now
       - Show account number, account type, modified, and balance
         -  Link to related .md file: [https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone2.md](https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone2.md)
-    - [ ] \(mm/dd/yyyy) User will be able to click an account for more information
+    - [x] \(07/21/2022) User will be able to click an account for more information
       - Show account number, account type, balance, opened/created date of the selected account (from Accounts table)
       - Show transaction history (from Transactions table)
         - For now limit results to 10 latest
