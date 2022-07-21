@@ -64,7 +64,7 @@
       - User will see user-friendly success message when account is created successfully
         - Redirect user to their Accounts page upon success
           -  Link to related .md file: [https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone2.md](https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone2.md)
-    - [ ] \(mm/dd/yyyy) User will be able to list their accounts
+    - [x] \(07/20/2022) User will be able to list their accounts
       - Limit results to 5 for now
       - Show account number, account type, modified, and balance
         -  Link to related .md file: [https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone2.md](https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone2.md)
