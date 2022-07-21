@@ -45,11 +45,11 @@
     - [x] \(07/17/2022) Create the Transactions table:
       - (id, account_src, account_dest, balance_change, transaction_type, memo, expected_total, created, modified) 
         -  Link to related .md file: Link to related .md file: [https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone2.md](https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone2.md)
-    - [ ] \(mm/dd/yyyy) Dashboard page:
+    - [x] \(07/18/2022) Dashboard page:
       - Will have links for Create Account, My Accounts, Deposit, Withdraw Transfer, Profile
         - Links that don’t have pages yet should just have href=”#”, you’ll update them later
           -  Link to related .md file: [https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone2.md](https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone2.md)
-    - [ ] \(mm/dd/yyyy) User will be able to create a checking account:
+    - [x] \(07/19/2022) User will be able to create a checking account:
       - System will generate a unique 12 character account number
         - Options (strike out the option you won’t do):
           - Option 1: Generate a random 12 digit/character value; must regenerate if a duplicate collision occurs
