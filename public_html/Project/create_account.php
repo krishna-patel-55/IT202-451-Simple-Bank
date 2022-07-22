@@ -14,7 +14,7 @@ is_logged_in(true);
             </select>
         </div>
         <div class="mb-3">
-            <label for="initialDeposit">Deposit Amount:</label>
+            <label for="initialDeposit">Balance Amount:</label>
             <input type="number" class="form-control" name="initialDeposit" id="initialDeposit" placeholder="minimum $5">
         </div>
         <div class="mb-3">
@@ -72,7 +72,6 @@ is_logged_in(true);
             $hasError = true;
         }
         if(!$hasError){
-            $initialDeposit = $initialDeposit;
             $user_id = get_user_id();
             //TODO 4 - create account number
             $accountNumber = generateAccountNumber(); //12 digit account number
