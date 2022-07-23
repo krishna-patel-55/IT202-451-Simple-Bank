@@ -74,36 +74,22 @@
         - For now limit results to 10 latest
         - Show the src/dest account numbers (not account id), the transaction type, the change in balance, when it occurred, expected total, and the memo
           -  Link to related .md file: [https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone2.md](https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone2.md)
-    - [x] \(07/21/2022) User will be able to deposit/withdraw from their account(s)
-      - Clearly label each view with a heading as “Withdraw” or “Deposit” according to the application context/state
-      - Form should have a dropdown of their accounts to pick from
-        - World account should not be in the dropdown as it’s not owned by anyone
-        - Account list should show account number and balance
-      - Form should have a field to enter a positive numeric value
-        - For now, allow any deposit value (1 - inf)
-      - For withdraw, add a check to make sure they can’t withdraw more money than the account has
-        - This must include a proper error message
-      - Form should allow the user to record a memo for the transaction; memos are an optional value from the user
-      - Each transaction is recorded as a transaction pair in the Transaction table per the details below and at the end of the document
-        * Note: These will reflect on the transaction history page (Account page’s “more info”)
-        * Note: if the world account is part of a transaction
-          - If the world account is using a positive id you must fetch the world account’s id (do not hard code the id as it may change if the application migrates or gets rebuilt)
-          - If using a negative value and you’re sure it won’t change across migrations you can hard code it but label (via a comment) what it refers to
-        - Process
-          - Requires two accounts (always)
-            - Fetch the current balance of each account
-            - Add or subtract the incoming balance change to calculate the expected totals of each account
-            - Insert two records into the Transactions Table
-              - Account A losing funds to Account B
-              - Account B gaining funds from Account A
-              - Ensure each record includes the proper balance_change, expected total, memo, the proper account ids (not account number), and the proper account type
-            - Deposits will be from the “world account” to the user’s account
-            - Withdraws will be from the user’s account to the “world account”
-            - After the transactions are inserted update the balance of each account
-              - By SUMing the balance_change for the account_src against the Transactions table
+    - [ ] \(mm/dd/yyyy) User will be able to deposit/withdraw from their account(s)
+      - Clearly label this activity with a heading showing “External Transfer”
+      - Form should include a dropdown of the current user’s accounts (as account_src)
+         Account list should show account number and balance
+      - Form should include a field for the destination user’s last name
+      - Form should include a field for the last 4 characters of the destination user’s account number (to lookup account_dest)
+      - Form should include a field for a positive numerical value
+      - Form should allow the user to record a memo for the transaction
+      - System shouldn’t let the user transfer more than the balance of their account
+      - System shouldn’t allow the user to transfer a negative value (i.e., can’t pull money from target user’s account)
+      - System will lookup appropriate account based on destination user’s last name and the last 4 digits of the account number
       - Show appropriate user-friendly error messages
-        - If any part of the process fails, the entire process should fail
       - Show user-friendly success messages
+      - Transaction will be recorded with the type as “ext-transfer”
+      - Each transaction is recorded as a transaction pair in the Transaction table
+        - These will reflect in the transaction history page
           -  Link to related .md file: [https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone2.md](https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone2.md)
 <!--
 - Milestone 3
