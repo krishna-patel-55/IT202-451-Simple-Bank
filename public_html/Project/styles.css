@@ -1,30 +1,9 @@
-.alert-success {
-    background-color: green
-}
-
-.alert-warning {
-    background-color: yellow;
-}
-
-.alert-danger {
-    background-color: red;
-}
-
-.alert-info {
-    background-color: teal;
-}
-
 body{
     background-color: #ADC0D0;
 }
+
 nav {
     background-color: #4085bf;
-}
-nav ul {
-    list-style: none;
-    overflow: hidden;
-    margin: 0;
-    padding: 1;
 }
 nav li {
     float: left;
@@ -36,7 +15,6 @@ nav a {
     padding: 12px 14px;
     border: 1px solid #4085bf;
     font-weight: bold;
-    font-family: "Monaco", monospace;
     text-transform: uppercase;
     color: #152533;
 }
@@ -51,39 +29,11 @@ nav a:link {
 h1 {
     text-align: center;
     color: #152533;
-    font-family: "Monaco", monospace;
     font-weight: bold;
     text-transform: uppercase;
 }
 form {
     text-align: center;
     color: #152533;
-    font-family: "Monaco", monospace;
     font-weight: bold;
-}
-
-input[type="submit"]{
-    margin-top: 5%;
-    border-radius: 5px;
-    font-family: "Monaco", monospace;
-    font-weight: bold;
-}
-input[type="submit"]:hover{
-    background-color: #2d5d86;
-}
-table, thead tr th, tbody tr td{
-    margin: auto;
-    border: 1px solid black;
-    border-collapse: collapse;
-}
-table thead tr th{
-    background-color: #4085bf ;
-    color: black;
-    font-family: "Monaco", monospace;
-    font-weight: bold;
-    text-transform: uppercase;
-}
-table tbody tr td{
-    color: #152533;
-    font-family: "Monaco", monospace;
 }

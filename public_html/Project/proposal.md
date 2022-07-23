@@ -7,37 +7,91 @@
 
 <!-- Line item / Feature template (use this for each bullet point) -- DO NOT DELETE THIS SECTION
 
-
 - [ ] \(mm/dd/yyyy of completion) Feature Title (from the proposal bullet point, if it's a sub-point indent it properly)
   -  Link to related .md file: [Link Name](link url)
 
  End Line item / Feature Template -- DO NOT DELETE THIS SECTION --> 
- 
- 
 ### Proposal Checklist and Evidence
 
 - Milestone 1
-    - [x] \(07/02/2022 of completion) User will be able to register a new account
+    - [x] \(07/02/2022) User will be able to register a new account
       -  Link to related .md file: [https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone1.md](https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone1.md)
-    - [x] \(07/02/2022 of completion) User will be able to login to their account (given they enter the correct credentials)
+    - [x] \(07/02/2022) User will be able to login to their account (given they enter the correct credentials)
       -  Link to related .md file: [https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone1.md](https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone1.md)
-    - [x] \(07/04/2022 of completion) User will be able to logout
+    - [x] \(07/04/2022) User will be able to logout
       -  Link to related .md file: [https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone1.md](https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone1.md)
-    - [x] \(07/04/2022 of completion) Basic security rules implemented
+    - [x] \(07/04/2022) Basic security rules implemented
       -  Link to related .md file: [https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone1.md](https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone1.md)
-    - [x] \(07/05/2022 of completion) Basic Roles implemented
+    - [x] \(07/05/2022) Basic Roles implemented
       -  Link to related .md file: [https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone1.md](https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone1.md)
-    - [x] \(07/06/2022 of completion) Site should have basic styles/theme applied; everything should be styled
+    - [x] \(07/06/2022) Site should have basic styles/theme applied; everything should be styled
       -  Link to related .md file: [https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone1.md](https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone1.md)
-    - [x] \(07/06/2022 of completion) Any output messages/errors should be “user friendly”
+    - [x] \(07/06/2022) Any output messages/errors should be “user friendly”
       -  Link to related .md file: [https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone1.md](https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone1.md)
-    - [x] \(07/04/2022 of completion) User will be able to see their profile
+    - [x] \(07/04/2022) User will be able to see their profile
       -  Link to related .md file: [https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone1.md](https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone1.md)
-    - [x] \(07/06/2022 of completion) User will be able to edit their profile
+    - [x] \(07/06/2022) User will be able to edit their profile
       -  Link to related .md file: [https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone1.md](https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone1.md)
-<!--      
+      
 - Milestone 2
-  - (duplicate template here for Milestone 2 features)
+    - [x] \(07/17/2022) Create the Accounts table:
+      - (id, account_number [unique, always 12 characters], user_id, balance (default 0), account_type, created, modified)
+        -  Link to related .md file: [https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone2.md](https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone2.md)
+    - [x] \(07/17/2022) Project setup steps:
+      - Create these as initial setup scripts in the sql folder:
+        - Create a system user if they don’t exist
+        - Create a world account in the Accounts table created above
+          -  Link to related .md file: [https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone2.md](https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone2.md)
+    - [x] \(07/17/2022) Create the Transactions table:
+      - (id, account_src, account_dest, balance_change, transaction_type, memo, expected_total, created, modified) 
+        -  Link to related .md file: Link to related .md file: [https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone2.md](https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone2.md)
+    - [x] \(07/18/2022) Dashboard page:
+      - Will have links for Create Account, My Accounts, Deposit, Withdraw Transfer, Profile
+        - Links that don’t have pages yet should just have href=”#”, you’ll update them later
+          -  Link to related .md file: [https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone2.md](https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone2.md)
+    - [x] \(07/19/2022) User will be able to create a checking account:
+      - System will generate a unique 12 character account number
+        - Options (strike out the option you won’t do):
+          - Option 1: Generate a random 12 digit/character value; must regenerate if a duplicate collision occurs
+          - ~~Option 2: Generate the number based on the id column; requires inserting a null first to get the last insert id, then update the record immediately after~~
+      - System will associate the account to the user
+      - Account type will be set as checking
+      - Will require a minimum deposit of $5 (from the world account)
+        - Entry will be recorded in the Transaction table as a transaction pair (per notes at end of document)
+        - Account Balance will be updated based on SUM of balance_change of account_src
+          - Do not set this value directly
+      - User will see user-friendly error messages when appropriate
+      - User will see user-friendly success message when account is created successfully
+        - Redirect user to their Accounts page upon success
+          -  Link to related .md file: [https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone2.md](https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone2.md)
+    - [x] \(07/20/2022) User will be able to list their accounts
+      - Limit results to 5 for now
+      - Show account number, account type, modified, and balance
+        -  Link to related .md file: [https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone2.md](https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone2.md)
+    - [x] \(07/21/2022) User will be able to click an account for more information
+      - Show account number, account type, balance, opened/created date of the selected account (from Accounts table)
+      - Show transaction history (from Transactions table)
+        - For now limit results to 10 latest
+        - Show the src/dest account numbers (not account id), the transaction type, the change in balance, when it occurred, expected total, and the memo
+          -  Link to related .md file: [https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone2.md](https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone2.md)
+    - [ ] \(mm/dd/yyyy) User will be able to deposit/withdraw from their account(s)
+      - Clearly label this activity with a heading showing “External Transfer”
+      - Form should include a dropdown of the current user’s accounts (as account_src)
+         Account list should show account number and balance
+      - Form should include a field for the destination user’s last name
+      - Form should include a field for the last 4 characters of the destination user’s account number (to lookup account_dest)
+      - Form should include a field for a positive numerical value
+      - Form should allow the user to record a memo for the transaction
+      - System shouldn’t let the user transfer more than the balance of their account
+      - System shouldn’t allow the user to transfer a negative value (i.e., can’t pull money from target user’s account)
+      - System will lookup appropriate account based on destination user’s last name and the last 4 digits of the account number
+      - Show appropriate user-friendly error messages
+      - Show user-friendly success messages
+      - Transaction will be recorded with the type as “ext-transfer”
+      - Each transaction is recorded as a transaction pair in the Transaction table
+        - These will reflect in the transaction history page
+          -  Link to related .md file: [https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone2.md](https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone2.md)
+<!--
 - Milestone 3
   - (duplicate template here for Milestone 3 features)
 - Milestone 4
