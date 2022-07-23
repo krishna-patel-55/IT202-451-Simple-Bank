@@ -25,20 +25,16 @@ function get_user_account_ids($user_id)
         error_log(var_export($e, true));
     }
 }
-function update_balance($acc, $val)
+function update_balance($acc)
 {
-    $updatedBal = (INT)get_account_balance($acc) + (INT)$val;
+    $query = "UPDATE Accounts set balance = (SELECT IFNULL(SUM(balance_change), 0) from Transactions WHERE account_src = :src) where id = :src";
     $db = getDB();
+    $stmt = $db->prepare($query);
     try {
-        $stmt = $db->prepare("UPDATE Accounts SET balance=$updatedBal WHERE id = :acc");
-        $result = $stmt->execute([":acc" => $acc]);
-        if($result){
-            return $result;
-        }
-    }
-    catch(Exception $e){
-        flash("An error occured while updating balance.", "danger");
-        error_log(var_export($e, true));
+        $stmt->execute([":src" => $acc]);
+    } catch (PDOException $e) {
+        error_log(var_export($e->errorInfo, true));
+        flash("Error updating balance", "danger");
     }
 }
 function make_transaction($srcId, $destId, $amount, $mode, $memo)
@@ -66,8 +62,8 @@ function make_transaction($srcId, $destId, $amount, $mode, $memo)
                                 ":mode_to" => $mode,
                                 ":memo_to" => $memo,
                                 ":destExTotal" => $dest_extotal]);
-        update_balance($srcId, ($amount*-1));
-        update_balance($destId, $amount);
+        update_balance($srcId);
+        update_balance($destId);
         return $result;
     } catch (Exception $e) {
         flash("Unable to make deposit.", "danger");
