@@ -74,7 +74,7 @@
         - For now limit results to 10 latest
         - Show the src/dest account numbers (not account id), the transaction type, the change in balance, when it occurred, expected total, and the memo
           -  Link to related .md file: [https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone2.md](https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone2.md)
-    - [ ] \(mm/dd/yyyy) User will be able to deposit/withdraw from their account(s)
+    - [x] \(07/22/2022) User will be able to deposit/withdraw from their account(s)
       - Clearly label this activity with a heading showing “External Transfer”
       - Form should include a dropdown of the current user’s accounts (as account_src)
          Account list should show account number and balance
