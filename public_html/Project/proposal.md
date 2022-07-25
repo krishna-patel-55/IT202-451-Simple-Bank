@@ -93,7 +93,7 @@
           -  Link to related .md file: [https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone2.md](https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone2.md)
 
   - Milestone 3
-    - [ ] \(mm/dd/yyyy) User will be able to transfer between their accounts
+    - [x] \(07/25/2022) User will be able to transfer between their accounts
         - Clearly label this activity with a heading showing “Internal Transfer”
         - Form should include a dropdown for account_src and a dropdown for account_dest (only accounts the user owns; no world account)
             - Account list should show account number and balance
