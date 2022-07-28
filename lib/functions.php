@@ -19,6 +19,9 @@ require(__DIR__ . "/user_helpers.php");
 //TODO 5: Account helpers
 require(__DIR__ . "/account_helpers.php");
 
+//TODO 6: Paginate helper
+require(__DIR__ . "/paginate.php");
+
 //duplicate email/username
 require(__DIR__ . "/duplicate_user_details.php");
 //reset session
