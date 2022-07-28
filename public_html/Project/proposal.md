@@ -106,7 +106,7 @@
         - Show appropriate user-friendly error messages
         - Show user-friendly success messages
       -  Link to related .md file: [https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone3.md](https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone3.md)
-    - [ ] \(mm/dd/yyyy) Transaction History page (Same rules as the previous Milestone plus the below)
+    - [x] \(07/27/2022) Transaction History page (Same rules as the previous Milestone plus the below)
         - User will be able to filter transactions between two dates
         - User will be able to filter transactions by type (deposit, withdraw, transfer)
         - Transactions should paginate results after the initial 10
