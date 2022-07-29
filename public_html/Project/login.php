@@ -87,7 +87,7 @@ require(__DIR__ . "/../../partials/nav.php");
     if(!$hasError){
         //TODO 4
         $db = getDB();
-        $stmt = $db->prepare("SELECT id, email, username, password from Users where email = :email or username = :email");
+        $stmt = $db->prepare("SELECT id, email, username, firstname, lastname, password from Users where email = :email or username = :email");
         try {
             $r = $stmt->execute([":email" => $email]);
             if ($r) {
@@ -113,7 +113,7 @@ require(__DIR__ . "/../../partials/nav.php");
                         } else {
                             $_SESSION["user"]["roles"] = []; //no roles
                         }
-                        flash("Welcome, " . get_username());
+                        flash("Welcome, " . get_firstname());
                         die(header("Location: home.php"));
                     } else {
                         flash("Invalid password");
