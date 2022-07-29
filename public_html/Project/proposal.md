@@ -111,7 +111,7 @@
         - User will be able to filter transactions by type (deposit, withdraw, transfer)
         - Transactions should paginate results after the initial 10
       -  Link to related .md file: [https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone3.md](https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone3.md)
-    - [ ] \(mm/dd/yyyy) User’s profile page should record and show First and Last name
+    - [x] \(07/28/2022) User’s profile page should record and show First and Last name
         - You may also capture this on the registration page, make note if you do
         - This will require an Alter Table statement for the Users table to include two new fields with default values
       -  Link to related .md file: [https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone3.md](https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone3.md)
