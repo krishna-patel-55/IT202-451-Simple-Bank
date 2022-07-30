@@ -107,6 +107,10 @@
             flash("A destination account must be selected.");
             $hasError = true;
         }
+        if($accountSrcID == $accountDestID){
+            flash("The source and destination account must be different.");
+            $hasError = true;
+        }
         if ($amount <= 0) {
             flash("Please enter a valid amount.");
             $hasError = true;

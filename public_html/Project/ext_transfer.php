@@ -17,7 +17,7 @@
     }
 ?>
 <div class="container-fluid">
-    <h1>Internal Transfer</h1>
+    <h1>External Transfer</h1>
     <form onsubmit="return validate(this)" method="POST">
         <div class="mb-3">
             <h3>Account Source:</h3>
