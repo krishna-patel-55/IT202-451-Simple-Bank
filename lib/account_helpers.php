@@ -70,4 +70,20 @@ function make_transaction($srcId, $destId, $amount, $mode, $memo)
         error_log(var_export($e, true));
     }
 }
+function getExtTransferAccount($lastname, $lastdigits)
+{
+    $db = getDB();
+    try {
+        $stmt = $db->prepare("SELECT Accounts.id 
+                            FROM Accounts 
+                            INNER JOIN Users ON lastname = :lastname
+                            WHERE account_number LIKE '%$lastdigits'
+                            LIMIT 1");
+        $stmt->execute([":lastname" => $lastname]);
+        $account_id = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $account_id['id'] ?? 0;
+    } catch (Exception $e) {
+        error_log(var_export($e, true));
+    }
+}
 ?>

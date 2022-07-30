@@ -91,9 +91,49 @@
       - Each transaction is recorded as a transaction pair in the Transaction table
         - These will reflect in the transaction history page
           -  Link to related .md file: [https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone2.md](https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone2.md)
+
+  - Milestone 3
+    - [x] \(07/25/2022) User will be able to transfer between their accounts
+        - Clearly label this activity with a heading showing “Internal Transfer”
+        - Form should include a dropdown for account_src and a dropdown for account_dest (only accounts the user owns; no world account)
+            - Account list should show account number and balance
+        - Form should include a field for a positive numeric value
+        - System shouldn’t allow the user to transfer more funds than what’s available in account_src
+        - Form should allow the user to record a memo for the transaction
+        - Each transaction is recorded as a transaction pair in the Transaction table
+            - These will reflect in the transaction history page
+            * Note: Same process as withdraw/deposit
+        - Show appropriate user-friendly error messages
+        - Show user-friendly success messages
+      -  Link to related .md file: [https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone3.md](https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone3.md)
+    - [x] \(07/27/2022) Transaction History page (Same rules as the previous Milestone plus the below)
+        - User will be able to filter transactions between two dates
+        - User will be able to filter transactions by type (deposit, withdraw, transfer)
+        - Transactions should paginate results after the initial 10
+      -  Link to related .md file: [https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone3.md](https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone3.md)
+    - [x] \(07/28/2022) User’s profile page should record and show First and Last name
+        - You may also capture this on the registration page, make note if you do
+        - This will require an Alter Table statement for the Users table to include two new fields with default values
+      -  Link to related .md file: [https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone3.md](https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone3.md)
+    - [x] \(07/30/2022) User will be able to transfer funds to another user’s account
+        - Clearly label this activity with a heading showing “External Transfer”
+        - Form should include a dropdown of the current user’s accounts (as account_src)
+            - Account list should show account number and balance
+        - Form should include a field for the destination user’s last name
+        - Form should include a field for the last 4 characters of the destination user’s account number (to lookup account_dest)
+        - Form should include a field for a positive numerical value
+        - Form should allow the user to record a memo for the transaction
+        - System shouldn’t let the user transfer more than the balance of their account
+        - System shouldn’t allow the user to transfer a negative value (i.e., can’t pull money from target user’s account)
+        - System will lookup appropriate account based on destination user’s last name and the last 4 digits of the account number
+        - Show appropriate user-friendly error messages
+        - Show user-friendly success messages
+        - Transaction will be recorded with the type as “ext-transfer”
+        - Each transaction is recorded as a transaction pair in the Transaction table
+            - These will reflect in the transaction history page
+            * Note: Same process as withdraw/deposit/transfer
+      -  Link to related .md file: [https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone3.md](https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone3.md)
 <!--
-- Milestone 3
-  - (duplicate template here for Milestone 3 features)
 - Milestone 4
   - (duplicate template here for Milestone 4 features)
   -->
