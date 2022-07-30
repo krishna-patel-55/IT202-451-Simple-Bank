@@ -20,7 +20,7 @@
 <?php
     $transactions = [];
     $transactionType = se($_GET, "transactionTypeFilter", "", false);
-        if (!in_array($transactionType, ["", "deposit", "transfer", "withdraw"])) {
+        if (!in_array($transactionType, ["", "deposit", "ext-transfer", "transfer", "withdraw"])) {
             $transactionType = "";
         }
     $startDate = se($_GET, "startDate", "", false);
@@ -97,6 +97,7 @@
                     <select class="form-control" id="transactionTypeFilter" name="transactionTypeFilter" data="">
                         <option value="">All</option>
                         <option value="deposit">Deposits</option>
+                        <option value="ext-transfer">External Transfers</option>
                         <option value="transfer">Transfers</option>
                         <option value="withdraw">Withdrawals</option>
                     </select>
