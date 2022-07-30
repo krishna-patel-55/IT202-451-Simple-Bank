@@ -2,14 +2,14 @@ body{
     background-color: #ADC0D0;
 }
 
-nav {
+nav#main {
     background-color: #4085bf;
 }
-nav li {
+nav#main li {
     float: left;
     margin-left: 10px;
 }
-nav a {
+nav#main a {
     display: block;
     padding: 10px;
     padding: 12px 14px;
@@ -18,12 +18,12 @@ nav a {
     text-transform: uppercase;
     color: #152533;
 }
-nav a:hover {
+nav#main a:hover {
     background-color: #2d5d86;
     color: whitesmoke;
     border: 1px solid #2d5d86;
 }
-nav a:link {
+nav#main a:link {
     text-decoration-line: none;
 }
 h1 {

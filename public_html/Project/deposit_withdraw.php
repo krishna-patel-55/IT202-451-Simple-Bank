@@ -87,7 +87,7 @@
         }
         if ($transaction_type == "withdraw") {
             if($amount > $accountBal) {
-                flash("Unsufficient funds for this withdrawal amount.");
+                flash("Insufficient funds for this withdrawal amount.");
                 $hasError = true;
             }
         }
@@ -98,7 +98,6 @@
             }
         }
         if(!$hasError){
-            //TODO 4 - create account number
             if ($transaction_type == "deposit") {
                 try {
                     // Account src losing funds to Account dest
