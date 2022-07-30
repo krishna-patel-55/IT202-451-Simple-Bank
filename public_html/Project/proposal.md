@@ -115,7 +115,7 @@
         - You may also capture this on the registration page, make note if you do
         - This will require an Alter Table statement for the Users table to include two new fields with default values
       -  Link to related .md file: [https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone3.md](https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone3.md)
-    - [ ] \(mm/dd/yyyy) User will be able to transfer funds to another user’s account
+    - [x] \(07/30/2022) User will be able to transfer funds to another user’s account
         - Clearly label this activity with a heading showing “External Transfer”
         - Form should include a dropdown of the current user’s accounts (as account_src)
             - Account list should show account number and balance
