@@ -133,10 +133,65 @@
             - These will reflect in the transaction history page
             * Note: Same process as withdraw/deposit/transfer
       -  Link to related .md file: [https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone3.md](https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone3.md)
-<!--
+
 - Milestone 4
-  - (duplicate template here for Milestone 4 features)
-  -->
+  - [ ] \(mm/dd/yyyy) User can set their profile to be public or private (will need another column in Users table)
+    - If profile is public, hide email address from other users (email address should not be publicly visible to others)
+    - Profile should show total net worth
+    -  Link to related .md file: [https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone4.md](https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone4.md)
+  - [ ] \(mm/dd/yyyy) Create a table for System Properties 
+    - Columns: id, name, value, modified, created
+    -  Link to related .md file: [https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone4.md](https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone4.md)
+  - [ ] \(mm/dd/yyyy) Alter the Accounts table to include a timestamp for last_apy_calc, default to current_timestamp, and a boolean for is_active default to true
+    -  Link to related .md file: [https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone4.md](https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone4.md)
+  - [ ] \(mm/dd/yyyy) User will be able open a savings account
+    - System will generate a 12 digit/character account number per the existing rules (see Checking Account above)
+    - System will associate the account to the user
+    - Account type will be set as savings
+    - Will require a minimum deposit of $5 (from the world account)
+      - Entry will be recorded in the Transaction table in a transaction pair (per notes previously and below)
+      - Account Balance will be updated based on SUM of balance_change of account_src
+    - System sets an APY that’ll be used to calculate monthly interest based on the balance of the account
+      - APY pulled from System Properties table 
+        - Hint: name could be “savings” and value could be the specific APY
+    - User will see user-friendly error messages when appropriate
+    - User will see user-friendly success message when account is created successfully
+      - Redirect user to their Accounts page
+    -  Link to related .md file: [https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone4.md](https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone4.md)
+  - [ ] \(mm/dd/yyyy) User will be able to take out a loan
+    - System will generate a 12 digit/character account number per the existing rules (see Checking Account above)
+    - Account type will be set as loan
+    - Will require a minimum value of $500
+    - System will show an APY (before the user submits the form, so on original page load)
+      - This will be used to add monthly interest to the loan account
+      - APY pulled from System Properties table 
+        - Hint: name could be “loan” and value could be the specific APY
+    - Form will have a dropdown of the user’s accounts of which to deposit the money into
+      - Hint: World account is not part of the loan process
+      - Account list should show account number and balance
+    - Special Case for Loans:
+      - Loans will show/display on the UI with a positive balance of what’s required to pay off (although it is a negative value in the database since the user owes it)
+      - User will transfer funds to the loan account to pay it off
+        - Transfers will continue to be recorded in the Transactions table per normal rules
+      - Loan account’s balance will be the balance minus any transfers to this account
+      - Interest will be applied to the current loan balance and add to it (causing the user to owe more) (i.e. subtract from the negative balance)
+      - A loan with 0 balance will be considered paid off and will not accrue interest and will be eligible to be marked as closed
+      - User can’t transfer more money from a loan once it’s been opened and a loan account should not appear in the Account Source dropdowns
+    - User will see user-friendly error messages when appropriate
+    - User will see user-friendly success message when account is created successfully
+      - Redirect user to their Accounts page
+    -  Link to related .md file: [https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone4.md](https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone4.md)
+  - [ ] \(mm/dd/yyyy) Listing accounts and/or viewing Account Details should show any applicable APY or “-” if none is set for the particular account
+    - Hint: Applies to Account List page and Transaction Details
+    -  Link to related .md file: [https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone4.md](https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone4.md)
+  - [ ] \(mm/dd/yyyy) User will be able to close an account
+    - User must transfer or withdraw all funds out of the account before doing so (i.e., balance must be 0)
+    - Account’s “is_active” column will get set as false
+      - All queries for Accounts should be updated to select only “is_active” = true accounts (i.e., dropdowns, My Accounts, etc)
+      - Do not delete the record, we’re doing a soft delete so it doesn’t break transactions
+    - Closed accounts should not be visible to the user anymore
+    - If the account is a loan, it must be paid off in full first
+    -  Link to related .md file: [https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone4.md](https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone4.md)
 ### Intructions
 #### Don't delete this
 1. Pick one project type
