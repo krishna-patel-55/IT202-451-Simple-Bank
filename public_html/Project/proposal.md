@@ -142,7 +142,7 @@
   - [x] \(08/04/2022) Create a table for System Properties 
     - Columns: id, name, value, modified, created
     -  Link to related .md file: [https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone4.md](https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone4.md)
-  - [ ] \(mm/dd/yyyy) Alter the Accounts table 
+  - [x] \(08/04/2022) Alter the Accounts table 
     - Include a timestamp for last_apy_calc, default to current_timestamp, and a boolean for is_active default to true
     -  Link to related .md file: [https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone4.md](https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone4.md)
   - [ ] \(mm/dd/yyyy) User will be able open a savings account
