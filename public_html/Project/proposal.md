@@ -139,10 +139,11 @@
     - If profile is public, hide email address from other users (email address should not be publicly visible to others)
     - Profile should show total net worth
     -  Link to related .md file: [https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone4.md](https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone4.md)
-  - [ ] \(mm/dd/yyyy) Create a table for System Properties 
+  - [x] \(08/04/2022) Create a table for System Properties 
     - Columns: id, name, value, modified, created
     -  Link to related .md file: [https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone4.md](https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone4.md)
-  - [ ] \(mm/dd/yyyy) Alter the Accounts table to include a timestamp for last_apy_calc, default to current_timestamp, and a boolean for is_active default to true
+  - [ ] \(mm/dd/yyyy) Alter the Accounts table 
+    - Include a timestamp for last_apy_calc, default to current_timestamp, and a boolean for is_active default to true
     -  Link to related .md file: [https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone4.md](https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone4.md)
   - [ ] \(mm/dd/yyyy) User will be able open a savings account
     - System will generate a 12 digit/character account number per the existing rules (see Checking Account above)
