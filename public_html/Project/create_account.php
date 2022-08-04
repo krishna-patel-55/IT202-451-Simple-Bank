@@ -84,7 +84,7 @@ is_logged_in(true);
                     $conTransaction = make_transaction(-1, $account_id, $initialDeposit, "deposit", "new account created");
                     if($conTransaction){
                         flash("Account Successfully Created!", "success");
-                        die(header("Location: ./my_accounts.php"));
+                        redirect("./my_accounts.php");
                     }
                 }
                 else{

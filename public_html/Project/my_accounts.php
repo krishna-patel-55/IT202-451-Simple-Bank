@@ -5,7 +5,7 @@
  
     if(isset($_POST["submit"])){
         $_SESSION["selected_account"] = se($_POST, "account", "", false);
-        die(header("Location:transaction_history.php"));
+        redirect("transaction_history.php");
     }
 
     $db = getDB();

@@ -12,6 +12,27 @@ function get_account_balance($account_id)
         error_log(var_export($e, true));
     }
 }
+function getNetWorth($user_id){
+    $db = getDB();
+    $stmt = $db->prepare("SELECT balance from Accounts WHERE user_id = :user_id");
+    try {
+        $stmt->execute([":user_id" => $user_id]);
+        $balances = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        if($balances) {
+            $net_worth = 0;
+            $value = 0;
+            foreach($balances as $balance)
+            {
+                $value = (int)$balance["balance"];
+                $net_worth += $value;
+            }
+        }
+        return $net_worth;
+    } catch (Exception $e) {
+        flash("Unable to retreive balance amount.", "danger");
+        error_log(var_export($e, true));
+    }
+}
 function get_user_account_ids($user_id)
 {
     $db = getDB();
