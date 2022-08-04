@@ -135,7 +135,7 @@
       -  Link to related .md file: [https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone3.md](https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone3.md)
 
 - Milestone 4
-  - [ ] \(mm/dd/yyyy) User can set their profile to be public or private (will need another column in Users table)
+  - [x] \(08/04/2022) User can set their profile to be public or private (will need another column in Users table)
     - If profile is public, hide email address from other users (email address should not be publicly visible to others)
     - Profile should show total net worth
     -  Link to related .md file: [https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone4.md](https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone4.md)

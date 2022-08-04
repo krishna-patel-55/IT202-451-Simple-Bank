@@ -26,7 +26,7 @@
     $startDate = se($_GET, "startDate", "", false);
     $endDate = se($_GET, "endDate", "", false);
 
-    $base_query = "SELECT Accounts.account_number, balance_change, transaction_type, memo, expected_total, Transactions.created 
+    $base_query = "SELECT Accounts.user_id, Accounts.account_number, account_dest, balance_change, transaction_type, memo, expected_total, Transactions.created 
                 FROM Transactions
                 INNER JOIN Accounts ON Accounts.id = account_dest";
     $total_query = "SELECT count(1) as total FROM Transactions";
@@ -137,7 +137,20 @@
                     <?php foreach ($transactions as $transaction) : ?>
                         <tr>
                             <td><?php se($selected_acc, "account_number");?></td>
-                            <td><?php se($transaction, "account_number"); ?></td>
+                            <td>
+                                <?php
+                                    if ($transaction["user_id"] != -1)
+                                    {
+                                        $user_acc_id = se($transaction, "user_id", 0, false);
+                                        $user_acc_num = se($transaction, "account_number", "", false);
+                                        include(__DIR__ . "/../../partials/profile_link.php"); 
+                                    }
+                                    else 
+                                    {
+                                        se($transaction, "account_number"); 
+                                    }
+                                ?>
+                            </td>
                             <td><?php se($transaction, "transaction_type"); ?></td>
                             <td>$<?php se($transaction, "balance_change"); ?></td>
                             <td><?php se($transaction, "created"); ?></td>
