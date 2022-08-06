@@ -1,6 +1,5 @@
 <?php
-function get_account_balance($account_id)
-{
+function get_account_balance($account_id){
     $db = getDB();
     $stmt = $db->prepare("SELECT balance from Accounts WHERE id = :id");
     try {
@@ -33,8 +32,7 @@ function getNetWorth($user_id){
         error_log(var_export($e, true));
     }
 }
-function get_user_account_ids($user_id)
-{
+function get_user_account_ids($user_id){
     $db = getDB();
     try {
         $stmt = $db->prepare("SELECT id from Accounts WHERE user_id = :user_id");
@@ -46,8 +44,7 @@ function get_user_account_ids($user_id)
         error_log(var_export($e, true));
     }
 }
-function update_balance($acc)
-{
+function update_balance($acc){
     $query = "UPDATE Accounts set balance = (SELECT IFNULL(SUM(balance_change), 0) from Transactions WHERE account_src = :src) where id = :src";
     $db = getDB();
     $stmt = $db->prepare($query);
@@ -58,8 +55,7 @@ function update_balance($acc)
         flash("Error updating balance", "danger");
     }
 }
-function make_transaction($srcId, $destId, $amount, $mode, $memo)
-{   
+function make_transaction($srcId, $destId, $amount, $mode, $memo){   
     $src_extotal = (INT)get_account_balance($srcId) - $amount;
     $dest_extotal = (INT)get_account_balance($destId) + $amount;
     $db = getDB();
@@ -91,8 +87,7 @@ function make_transaction($srcId, $destId, $amount, $mode, $memo)
         error_log(var_export($e, true));
     }
 }
-function getExtTransferAccount($lastname, $lastdigits)
-{
+function getExtTransferAccount($lastname, $lastdigits){
     $db = getDB();
     try {
         $stmt = $db->prepare("SELECT Accounts.id 
@@ -105,6 +100,17 @@ function getExtTransferAccount($lastname, $lastdigits)
         return $account_id['id'] ?? 0;
     } catch (Exception $e) {
         error_log(var_export($e, true));
+    }
+}
+function applyAPY($acc_id){
+    $query = "UPDATE Accounts SET last_apy_calc = current_timestamp WHERE id = :acc_id";
+    $db = getDB();
+    $stmt = $db->prepare($query);
+    try {
+        $stmt->execute([":acc_id" => $acc_id]);
+    } catch (PDOException $e) {
+        error_log(var_export($e->errorInfo, true));
+        flash("Error updating apy timestamp", "danger");
     }
 }
 ?>
