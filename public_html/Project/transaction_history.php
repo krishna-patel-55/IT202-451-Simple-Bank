@@ -2,8 +2,8 @@
     require_once(__DIR__ . "/../../partials/nav.php");
     is_logged_in(true);
     $acc_id = se($_SESSION, 'selected_account', null, false);
-    // $loanAPY = getRateAPY("loan");
-    // $savingsAPY = getRateAPY("savings");
+    $loanAPY = getRateAPY("loan");
+    $savingsAPY = getRateAPY("savings");
     $db = getDB();
     $stmt = $db->prepare("SELECT account_number, balance, account_type, created
                         FROM Accounts 
@@ -81,7 +81,7 @@
                 <th>Account #</th>
                 <th>Account Type</th>
                 <th>Current Balance</th>
-                <!-- <th>APY</th> -->
+                <th>APY</th>
                 <th>Created</th>
             </thead>
             <thead>
@@ -100,17 +100,17 @@
                             } 
                     ?>
                 </th>
-                <!-- <th><?php //if($selected_acc["account_type"] == "loan"){
-                            //se($loanAPY); echo "%";
-                        // }
-                        // else if($selected_acc["account_type"] == "savings"){
-                            // se($savingsAPY); echo "%";
-                        // }
-                        // else{
-                        //     echo "-";
-                        // }
+                <th><?php if($selected_acc["account_type"] == "loan"){
+                            se($loanAPY); echo "%";
+                        }   
+                        else if($selected_acc["account_type"] == "savings"){
+                            se($savingsAPY); echo "%";
+                        }
+                        else{
+                            echo "-";
+                        }
                     ?>
-                </th> -->
+                </th>
                 <th><?php se($selected_acc, "created"); ?></th>
             </thead>
         </table>
