@@ -102,7 +102,7 @@ if (isset($_POST["username"])) {
                     </td>
                     <td>
                         <?php foreach ($active_roles as $role) : ?>
-                            <div>
+                            <div class="mb-3">
                                 <label for="role_<?php se($role, 'id'); ?>"><?php se($role, "name"); ?></label>
                                 <input id="role_<?php se($role, 'id'); ?>" type="checkbox" name="roles[]" value="<?php se($role, 'id'); ?>" />
                             </div>

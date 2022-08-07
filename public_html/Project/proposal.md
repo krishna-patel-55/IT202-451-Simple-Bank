@@ -159,7 +159,7 @@
     - User will see user-friendly success message when account is created successfully
       - Redirect user to their Accounts page
     -  Link to related .md file: [https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone4.md](https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone4.md)
-  - [ ] \(mm/dd/yyyy) User will be able to take out a loan
+  - [x] \(08/07/2022) User will be able to take out a loan
     - System will generate a 12 digit/character account number per the existing rules (see Checking Account above)
     - Account type will be set as loan
     - Will require a minimum value of $500

@@ -2,6 +2,8 @@
     require_once(__DIR__ . "/../../partials/nav.php");
     is_logged_in(true);
     $acc_id = se($_SESSION, 'selected_account', null, false);
+    // $loanAPY = getRateAPY("loan");
+    // $savingsAPY = getRateAPY("savings");
     $db = getDB();
     $stmt = $db->prepare("SELECT account_number, balance, account_type, created
                         FROM Accounts 
@@ -20,7 +22,7 @@
 <?php
     $transactions = [];
     $transactionType = se($_GET, "transactionTypeFilter", "", false);
-        if (!in_array($transactionType, ["", "deposit", "ext-transfer", "transfer", "withdraw"])) {
+        if (!in_array($transactionType, ["", "deposit", "ext-transfer", "interest", "transfer", "withdraw"])) {
             $transactionType = "";
         }
     $startDate = se($_GET, "startDate", "", false);
@@ -79,12 +81,36 @@
                 <th>Account #</th>
                 <th>Account Type</th>
                 <th>Current Balance</th>
+                <!-- <th>APY</th> -->
                 <th>Created</th>
             </thead>
             <thead>
                 <th><?php se($selected_acc, "account_number"); ?></th>
                 <th><?php se($selected_acc, "account_type"); ?></th>
-                <th>$<?php se($selected_acc, "balance"); ?></th>
+                <th>$<?php if($selected_acc["account_type"] == "loan"){
+                                if($selected_acc["balance"] == 0){
+                                    echo ($selected_acc["balance"]);
+                                }
+                                else{
+                                    echo ($selected_acc["balance"]*-1);
+                                }
+                            }
+                            else{
+                                se($selected_acc, "balance");  
+                            } 
+                    ?>
+                </th>
+                <!-- <th><?php //if($selected_acc["account_type"] == "loan"){
+                            //se($loanAPY); echo "%";
+                        // }
+                        // else if($selected_acc["account_type"] == "savings"){
+                            // se($savingsAPY); echo "%";
+                        // }
+                        // else{
+                        //     echo "-";
+                        // }
+                    ?>
+                </th> -->
                 <th><?php se($selected_acc, "created"); ?></th>
             </thead>
         </table>
@@ -98,6 +124,7 @@
                         <option value="">All</option>
                         <option value="deposit">Deposits</option>
                         <option value="ext-transfer">External Transfers</option>
+                        <option value="interest">Interest</option>
                         <option value="transfer">Transfers</option>
                         <option value="withdraw">Withdrawals</option>
                     </select>

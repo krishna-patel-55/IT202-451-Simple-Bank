@@ -1,0 +1,2 @@
+ALTER TABLE `Accounts`
+MODIFY COLUMN `balance` DECIMAL(10,2) not null DEFAULT 0.0;

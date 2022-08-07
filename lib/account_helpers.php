@@ -26,6 +26,9 @@ function getNetWorth($user_id){
                 $net_worth += $value;
             }
         }
+        else{
+            return 0;
+        }
         return $net_worth;
     } catch (Exception $e) {
         flash("Unable to retreive balance amount.", "danger");
@@ -56,8 +59,8 @@ function update_balance($acc){
     }
 }
 function make_transaction($srcId, $destId, $amount, $mode, $memo){   
-    $src_extotal = (INT)get_account_balance($srcId) - $amount;
-    $dest_extotal = (INT)get_account_balance($destId) + $amount;
+    $src_extotal = get_account_balance($srcId) - $amount;
+    $dest_extotal = get_account_balance($destId) + $amount;
     $db = getDB();
     try {
         $stmt = $db->prepare(
@@ -102,15 +105,67 @@ function getExtTransferAccount($lastname, $lastdigits){
         error_log(var_export($e, true));
     }
 }
-function applyAPY($acc_id){
-    $query = "UPDATE Accounts SET last_apy_calc = current_timestamp WHERE id = :acc_id";
+function getRateAPY($type){
     $db = getDB();
-    $stmt = $db->prepare($query);
+    $stmt = $db->prepare("SELECT value 
+                        FROM System_Properties
+                        WHERE name = :type");
     try {
-        $stmt->execute([":acc_id" => $acc_id]);
-    } catch (PDOException $e) {
+        $stmt->execute([":type" => $type]);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        $rate = $result['value'];
+        return $rate;
+    } 
+    catch (PDOException $e) {
+        flash("Error fetching apy rate", "danger");
         error_log(var_export($e->errorInfo, true));
-        flash("Error updating apy timestamp", "danger");
+    }
+}
+function applyInterest($acc_id, $acc_type){
+    $apy = getRateAPY($acc_type);
+    $current_balance = get_account_balance($acc_id);
+    if($current_balance != 0){
+        $interest = round(($current_balance * (($apy/100)/12)), 2) ;
+        $updated_balance = $current_balance + $interest;
+        $query = "UPDATE Accounts 
+                SET balance = :updated_balance 
+                WHERE id = :acc_id";
+        $db = getDB();
+        $stmt = $db->prepare($query);
+        try {
+            $result = $stmt->execute([":updated_balance" => $updated_balance, ":acc_id" => $acc_id]);
+            if($result){
+                showInterestTransaction($acc_id, $updated_balance, $interest);
+            }
+            flash("Updated balance with interest", "success");
+        } catch (PDOException $e) {
+            error_log(var_export($e->errorInfo, true));
+            flash("Error updating balance with interest", "danger");
+        }
+    }
+    else {
+        flash("You've selected an account with a balance of 0", "warning");
+    }
+}
+function showInterestTransaction($acc_id, $expected_total, $interest){
+    $interest = abs($interest);
+    $db = getDB();
+    try {
+        $stmt = $db->prepare(
+        "INSERT into Transactions
+            (account_src, account_dest, balance_change, transaction_type, memo, expected_total) 
+        VALUES 
+            (:acc_id, :accid, :interest, :mode, :memo, :expected_total)");
+        $result = $stmt->execute([":acc_id" => $acc_id,
+                                ":accid" => $acc_id,
+                                ":interest" => $interest,
+                                ":mode" => "interest",
+                                ":memo" => "interest applied",
+                                ":expected_total" => $expected_total]);
+        return $result;
+    } catch (Exception $e) {
+        flash("Unable to make create interest entry.", "danger");
+        error_log(var_export($e, true));
     }
 }
 ?>
