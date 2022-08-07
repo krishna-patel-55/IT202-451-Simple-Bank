@@ -5,7 +5,7 @@
     $db = getDB();
     $stmt = $db->prepare("SELECT id, account_number, account_type, balance
                         FROM Accounts 
-                        WHERE user_id = :user_id");
+                        WHERE user_id = :user_id AND is_active = true");
     $accounts = [];
     try {
         $stmt->execute([":user_id" => $uid]);
@@ -29,7 +29,7 @@
                     <?php foreach ($accounts as $account) : ?>
                         <?php if($account["account_type"] != "loan") :?>
                             <option value="<?php se($account, 'id'); ?>">
-                                <?php se($account, 'account_number');?> | <?php se($account, 'account_type'); ?> | <?php se($account, "balance");?>
+                                <?php se($account, 'account_number');?> | <?php se($account, 'account_type'); ?> | $<?php se($account, "balance");?>
                             </option>
                         <?php endif; ?>
                     <?php endforeach; ?>
@@ -42,15 +42,15 @@
                 <?php if (empty($accounts)) : ?>
                     <option value='' disabled selected>No Accounts</option>
                 <?php else : ?>
-                    <option value='' disabled selected>Account Destination Number -- Balance</option>
+                    <option value='' disabled selected>Account Destination Number | Type | Balance</option>
                     <?php foreach ($accounts as $account) : ?>
                         <option value="<?php se($account, 'id'); ?>">
-                            <?php se($account, 'account_number');?> | <?php se($account, 'account_type'); ?> | $
+                            <?php se($account, 'account_number');?> | <?php se($account, 'account_type'); ?> | 
                             <?php if($account["account_type"] == "loan"){
-                                    echo ((int)$account["balance"]*-1);
+                                    echo "$";se($account["balance"]*-1);
                                   }
                                   else {
-                                    se($account, "balance");  
+                                    echo "$";se($account, "balance");  
                                   } 
                             ?>
                         </option>
@@ -60,7 +60,7 @@
         </div>
         <div class="mb-3">
             <label for="amount">Transfer Amount:</label>
-            <input type="number" class="form-control" name="amount" id="amount" placeholder="minimum $1" min="1" max="&infin">
+            <input type="number" class="form-control" name="amount" id="amount" placeholder="minimum $1" step="0.01" min="1" max="&infin">
         </div>
         <div class="mb-3">
             <label for="memo">Memo: (optional)</label>
@@ -106,6 +106,7 @@
         $amount = se($_POST, "amount", "", false);
         $memo = se($_POST, "memo", "", false);
         $accountSrcBal = get_account_balance($accountSrcID);
+        $accountLoanBalance = get_account_balance($accountDestID);
         //TODO 3: validate/use
         $hasError = false;
         if($accountSrcID == '') {
@@ -127,6 +128,13 @@
         if($amount > $accountSrcBal) {
             flash("Insufficient funds for this transfer amount.");
             $hasError = true;
+        }
+        if($accountLoanBalance < 0 ){
+            $accountLoanBalance = $accountLoanBalance * -1;
+            if($amount > $accountLoanBalance){
+                flash("Please enter the exact loan amount to pay off");
+                $hasError = true;
+            }
         }
         if(!$hasError) {
             try {

@@ -1,7 +1,7 @@
 <?php
 function get_account_balance($account_id){
     $db = getDB();
-    $stmt = $db->prepare("SELECT balance from Accounts WHERE id = :id");
+    $stmt = $db->prepare("SELECT balance from Accounts WHERE id = :id AND is_active = true");
     try {
         $stmt->execute([":id" => $account_id]);
         $balance = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -13,7 +13,7 @@ function get_account_balance($account_id){
 }
 function getNetWorth($user_id){
     $db = getDB();
-    $stmt = $db->prepare("SELECT balance from Accounts WHERE user_id = :user_id");
+    $stmt = $db->prepare("SELECT balance from Accounts WHERE user_id = :user_id AND is_active = true");
     try {
         $stmt->execute([":user_id" => $user_id]);
         $balances = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -22,7 +22,7 @@ function getNetWorth($user_id){
             $value = 0;
             foreach($balances as $balance)
             {
-                $value = (int)$balance["balance"];
+                $value = $balance["balance"];
                 $net_worth += $value;
             }
         }
@@ -38,7 +38,7 @@ function getNetWorth($user_id){
 function get_user_account_ids($user_id){
     $db = getDB();
     try {
-        $stmt = $db->prepare("SELECT id from Accounts WHERE user_id = :user_id");
+        $stmt = $db->prepare("SELECT id from Accounts WHERE user_id = :user_id AND is_active = true");
         $stmt->execute([":user_id" => $user_id]);
         $account_ids = $stmt->fetchAll(PDO::FETCH_COLUMN, 0);
         return $account_ids;
@@ -48,7 +48,7 @@ function get_user_account_ids($user_id){
     }
 }
 function update_balance($acc){
-    $query = "UPDATE Accounts set balance = (SELECT IFNULL(SUM(balance_change), 0) from Transactions WHERE account_src = :src) where id = :src";
+    $query = "UPDATE Accounts set balance = (SELECT IFNULL(SUM(balance_change), 0) from Transactions WHERE account_src = :src) where id = :src and is_active = true";
     $db = getDB();
     $stmt = $db->prepare($query);
     try {
@@ -96,7 +96,7 @@ function getExtTransferAccount($lastname, $lastdigits){
         $stmt = $db->prepare("SELECT Accounts.id 
                             FROM Accounts 
                             INNER JOIN Users ON lastname = :lastname
-                            WHERE account_number LIKE '%$lastdigits'
+                            WHERE is_active = true AND account_number LIKE '%$lastdigits'
                             LIMIT 1");
         $stmt->execute([":lastname" => $lastname]);
         $account_id = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -129,7 +129,7 @@ function applyInterest($acc_id, $acc_type){
         $updated_balance = $current_balance + $interest;
         $query = "UPDATE Accounts 
                 SET balance = :updated_balance 
-                WHERE id = :acc_id";
+                WHERE id = :acc_id AND is_active = true";
         $db = getDB();
         $stmt = $db->prepare($query);
         try {
@@ -166,6 +166,26 @@ function showInterestTransaction($acc_id, $expected_total, $interest){
     } catch (Exception $e) {
         flash("Unable to make create interest entry.", "danger");
         error_log(var_export($e, true));
+    }
+}
+function closeAccount($account_id){
+    $balance = get_account_balance($account_id);
+    if($balance == 0){
+        $db = getDB();
+        $stmt = $db->prepare("UPDATE Accounts 
+                            SET is_active = false
+                            WHERE id = :id 
+                            AND is_active = true");
+        try {
+            $stmt->execute([":id" => $account_id]);
+            return true;
+        } catch (Exception $e) {
+            flash("Unable to close account", "danger");
+            error_log(var_export($e, true));
+        }
+    }
+    else {
+        flash("Unable to close this account. Balance must be $0");
     }
 }
 ?>

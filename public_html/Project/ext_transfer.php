@@ -3,9 +3,9 @@
     is_logged_in(true);
     $uid = get_user_id();
     $db = getDB();
-    $stmt = $db->prepare("SELECT id, account_number, balance
+    $stmt = $db->prepare("SELECT id, account_number, account_type, balance
                         FROM Accounts 
-                        WHERE user_id = :user_id
+                        WHERE user_id = :user_id AND is_active = true
                         AND account_type <> 'loan'");
     $accounts = [];
     try {
@@ -29,10 +29,10 @@
                 <?php if (empty($accounts)) : ?>
                     <option value='' disabled selected>No Accounts</option>
                 <?php else : ?>
-                    <option value='' disabled selected>Account Source Number -- Balance</option>
+                    <option value='' disabled selected>Account Source Number | Type | Balance</option>
                     <?php foreach ($accounts as $account) : ?>
                         <option value="<?php se($account, 'id'); ?>">
-                            <?php se($account, 'account_number');?> -- $<?php se($account, 'balance'); ?>
+                            <?php se($account, 'account_number');?> | <?php se($account, 'account_type');?> | $<?php se($account, 'balance'); ?>
                         </option>
                     <?php endforeach; ?>
                 <?php endif; ?>
@@ -51,7 +51,7 @@
         </div>
         <div class="mb-3">
             <label for="amount">Transfer Amount:</label>
-            <input type="number" class="form-control" name="amount" id="amount" placeholder="minimum $1" min="1" max="&infin">
+            <input type="number" class="form-control" name="amount" id="amount" step="0.01" placeholder="minimum $1" min="1" max="&infin">
         </div>
         <div class="mb-3">
             <label for="memo">Memo: (optional)</label>

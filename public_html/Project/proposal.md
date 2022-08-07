@@ -182,10 +182,10 @@
     - User will see user-friendly success message when account is created successfully
       - Redirect user to their Accounts page
     -  Link to related .md file: [https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone4.md](https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone4.md)
-  - [ ] \(mm/dd/yyyy) Listing accounts and/or viewing Account Details should show any applicable APY or “-” if none is set for the particular account
+  - [x] \(08/07/2022) Listing accounts and/or viewing Account Details should show any applicable APY or “-” if none is set for the particular account
     - Hint: Applies to Account List page and Transaction Details
     -  Link to related .md file: [https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone4.md](https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone4.md)
-  - [ ] \(mm/dd/yyyy) User will be able to close an account
+  - [x] \(08/07/2022) User will be able to close an account
     - User must transfer or withdraw all funds out of the account before doing so (i.e., balance must be 0)
     - Account’s “is_active” column will get set as false
       - All queries for Accounts should be updated to select only “is_active” = true accounts (i.e., dropdowns, My Accounts, etc)
