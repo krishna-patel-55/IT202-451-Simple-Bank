@@ -134,6 +134,10 @@
             flash("Insufficient funds for this transfer amount.");
             $hasError = true;
         }
+        if($accountLoanBalance == 0){
+            flash("This loan has already been paid off. Please close the account.");
+            $hasError = true;
+        }
         if($accountLoanBalance < 0 ){
             $accountLoanBalance = $accountLoanBalance * -1;
             if($amount > $accountLoanBalance){
