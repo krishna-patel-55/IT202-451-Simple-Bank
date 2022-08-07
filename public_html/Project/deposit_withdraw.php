@@ -6,7 +6,7 @@
     $db = getDB();
     $stmt = $db->prepare("SELECT id, account_number, account_type, balance
                         FROM Accounts 
-                        WHERE user_id = :user_id 
+                        WHERE user_id = :user_id AND is_active = true
                         AND account_type <> 'loan'");
     $accounts = [];
     try {
@@ -38,7 +38,7 @@
         </div>
         <div class="mb-3">
             <label for="amount">Amount to <?php se($transaction_type); ?>:</label>
-            <input type="number" class="form-control" name="amount" id="amount" placeholder="minimum $1" min="1" max="&infin">
+            <input type="number" class="form-control" name="amount" id="amount" step="0.01" placeholder="minimum $1" min="1" max="&infin">
         </div>
         <div class="mb-3">
             <label for="memo">Memo: (optional)</label>

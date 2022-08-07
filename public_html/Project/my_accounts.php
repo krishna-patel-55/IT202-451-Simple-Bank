@@ -13,7 +13,7 @@
     $db = getDB();
     $stmt = $db->prepare("SELECT id, account_number, balance, account_type, created, modified 
                         FROM Accounts 
-                        WHERE user_id = :user_id 
+                        WHERE user_id = :user_id AND is_active = true
                         ORDER BY modified desc");
     $accounts = [];
     try {
@@ -23,6 +23,12 @@
     } catch (PDOException $e) {
         flash("Unable to retreive accounts", "danger");
         error_log(var_export($e->errorInfo, true));
+    }
+    if (isset($_GET['close']) && !empty($_GET['close'])) {
+        $closed = closeAccount($_GET['close']);
+        if($closed){
+            redirect("my_accounts.php");
+        }
     }
 ?>
 <div class="container-fluid">
@@ -74,6 +80,9 @@
                             <td>
                                 <input type="hidden" name="account" value=<?php se($account, 'id'); ?> />
                                 <input class="btn btn-primary" type="submit" name="submit" value="VIEW"/>
+                            </td>
+                            <td>
+                                <a href='?close=<?php se($account, 'id'); ?>'>Close Account</a>
                             </td>
                         </tr>
                     </form>
