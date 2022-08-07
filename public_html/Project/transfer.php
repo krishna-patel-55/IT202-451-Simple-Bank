@@ -47,8 +47,13 @@
                         <option value="<?php se($account, 'id'); ?>">
                             <?php se($account, 'account_number');?> | <?php se($account, 'account_type'); ?> | 
                             <?php if($account["account_type"] == "loan"){
-                                    echo "$";se($account["balance"]*-1);
-                                  }
+                                    if($account["balance"] == 0){
+                                        echo "$";se($account["balance"]);
+                                    }
+                                    else{
+                                        echo "$";se($account["balance"]*-1);
+                                    }
+                                }
                                   else {
                                     echo "$";se($account, "balance");  
                                   } 
