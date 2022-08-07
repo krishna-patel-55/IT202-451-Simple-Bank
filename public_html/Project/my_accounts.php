@@ -1,6 +1,8 @@
 <?php
     require_once(__DIR__ . "/../../partials/nav.php");
     is_logged_in(true);
+    $loanAPY = getRateAPY("loan");
+    $savingsAPY = getRateAPY("savings");
     $uid = get_user_id();
  
     if(isset($_POST["submit"])){
@@ -12,7 +14,7 @@
     $stmt = $db->prepare("SELECT id, account_number, balance, account_type, created, modified 
                         FROM Accounts 
                         WHERE user_id = :user_id 
-                        ORDER BY modified desc LIMIT 5");
+                        ORDER BY modified desc");
     $accounts = [];
     try {
         $stmt->execute([":user_id" => $uid]);
@@ -31,6 +33,7 @@
             <th>Type</th>
             <th>Modified</th>
             <th>Balance</th>
+            <th>APY</th>
         </thead>
         <tbody>
             <?php if (empty($accounts)) : ?>
@@ -55,6 +58,17 @@
                                         else{
                                             se($account, "balance");  
                                         } 
+                                ?>
+                            </td>
+                            <td><?php if($account["account_type"] == "loan"){
+                                        se($loanAPY); echo "%";
+                                    }   
+                                    else if($account["account_type"] == "savings"){
+                                        se($savingsAPY); echo "%";
+                                    }
+                                    else{
+                                        echo "-";
+                                    }
                                 ?>
                             </td>
                             <td>
