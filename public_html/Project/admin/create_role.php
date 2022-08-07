@@ -18,6 +18,7 @@ if (isset($_POST["name"]) && isset($_POST["description"])) {
         try {
             $stmt->execute([":name" => $name, ":desc" => $desc]);
             flash("Successfully created role $name!", "success");
+            redirect("./admin/list_roles.php");
         } catch (PDOException $e) {
             if ($e->errorInfo[1] === 1062) {
                 flash("A role with this name already exists, please try another", "warning");

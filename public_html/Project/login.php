@@ -114,7 +114,7 @@ require(__DIR__ . "/../../partials/nav.php");
                             $_SESSION["user"]["roles"] = []; //no roles
                         }
                         flash("Welcome, " . get_firstname());
-                        die(header("Location: home.php"));
+                        redirect("home.php");
                     } else {
                         flash("Invalid password");
                     }
