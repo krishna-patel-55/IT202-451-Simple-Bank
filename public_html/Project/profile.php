@@ -172,14 +172,14 @@
             <div style="text-align:center">
                 Email: <?php se($email); ?>
             </div>
-            <div style="text-align:center">
-                Net Worth = $<?php $net_worth = getNetWorth($user_id);
-                se($net_worth); ?>
-            </div>
         <?php endif; ?>
         <?php if ($isVisible || $isMe) : ?>
             <div style="text-align:center">
                 <h4>Username: <?php se($username); ?></h3>
+            </div>
+            <div style="text-align:center">
+                Net Worth = $<?php $net_worth = getNetWorth($user_id);
+                se($net_worth); ?>
             </div>
             <div style="text-align:center">
                 Joined: <?php se($joined); ?>
