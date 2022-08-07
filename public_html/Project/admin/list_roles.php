@@ -52,9 +52,8 @@ try {
             <input class="btn btn-primary" type="submit" value="Search" />
         </div>
     </form>
-    <table class="table">
+    <table style="text-align:center" class="table">
         <thead>
-            <th>ID</th>
             <th>Name</th>
             <th>Description</th>
             <th>Active</th>
@@ -68,20 +67,19 @@ try {
             <?php else : ?>
                 <?php foreach ($roles as $role) : ?>
                     <tr>
-                        <td><?php se($role, "id"); ?></td>
                         <td><?php se($role, "name"); ?></td>
                         <td><?php se($role, "description"); ?></td>
                         <td><?php echo (se($role, "is_active", 0, false) ? "active" : "disabled"); ?></td>
-                        <td>
                             <form method="POST">
                                 <input type="hidden" name="role_id" value="<?php se($role, 'id'); ?>" />
                                 <?php if (isset($search) && !empty($search)) : ?>
                                     <?php /* if this is part of a search, lets persist the search criteria so it reloads correctly*/ ?>
                                     <input type="hidden" name="role" value="<?php se($search, null); ?>" />
                                 <?php endif; ?>
+                                <td>
                                 <input class="btn btn-primary" type="submit" value="Toggle" />
+                                </td>
                             </form>
-                        </td>
                     </tr>
                 <?php endforeach; ?>
             <?php endif; ?>

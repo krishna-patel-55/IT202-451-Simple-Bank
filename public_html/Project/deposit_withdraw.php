@@ -4,9 +4,10 @@
     $transaction_type = $_GET['type'];
     $uid = get_user_id();
     $db = getDB();
-    $stmt = $db->prepare("SELECT id, account_number, balance
+    $stmt = $db->prepare("SELECT id, account_number, account_type, balance
                         FROM Accounts 
-                        WHERE user_id = :user_id");
+                        WHERE user_id = :user_id 
+                        AND account_type <> 'loan'");
     $accounts = [];
     try {
         $stmt->execute([":user_id" => $uid]);
@@ -26,10 +27,10 @@
                 <?php if (empty($accounts)) : ?>
                     <option value='' disabled selected>No Accounts</option>
                 <?php else : ?>
-                    <option value='' disabled selected>Account Number -- Balance</option>
+                    <option value='' disabled selected>Account Number | Type | Balance</option>
                     <?php foreach ($accounts as $account) : ?>
                         <option value="<?php se($account, 'id'); ?>">
-                            <?php se($account, 'account_number');?> -- $<?php se($account, 'balance'); ?>
+                            <?php se($account, 'account_number');?>  |  <?php se($account, 'account_type'); ?>  |  $<?php se($account, 'balance'); ?>
                         </option>
                     <?php endforeach; ?>
                 <?php endif; ?>
@@ -104,6 +105,7 @@
                     $conTransaction = make_transaction(-1, $accountID, $amount, $transaction_type, $memo);
                         if($conTransaction){
                             flash("Deposited Successfully!", "success");
+                            redirect("./my_accounts.php");
                         }
                 } catch (Exception $e) {
                     flash("Unable to make deposit.", "danger");
@@ -116,6 +118,7 @@
                     $conTransaction = make_transaction(-1, $accountID, ($amount*-1), $transaction_type, $memo);
                         if($conTransaction){
                             flash("Withdrawn Successfully!", "success");
+                            redirect("./my_accounts.php");
                         }
                 } catch (Exception $e) {
                     flash("Unable to make withdrawal.", "danger");

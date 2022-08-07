@@ -13,7 +13,6 @@ nav#main a {
     display: block;
     padding: 10px;
     padding: 12px 14px;
-    border: 1px solid #4085bf;
     font-weight: bold;
     text-transform: uppercase;
     color: #152533;
@@ -21,7 +20,6 @@ nav#main a {
 nav#main a:hover {
     background-color: #2d5d86;
     color: whitesmoke;
-    border: 1px solid #2d5d86;
 }
 nav#main a:link {
     text-decoration-line: none;

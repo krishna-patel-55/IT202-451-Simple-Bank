@@ -3,7 +3,7 @@
     is_logged_in(true);
     $uid = get_user_id();
     $db = getDB();
-    $stmt = $db->prepare("SELECT id, account_number, balance
+    $stmt = $db->prepare("SELECT id, account_number, account_type, balance
                         FROM Accounts 
                         WHERE user_id = :user_id");
     $accounts = [];
@@ -25,11 +25,13 @@
                 <?php if (empty($accounts)) : ?>
                     <option value='' disabled selected>No Accounts</option>
                 <?php else : ?>
-                    <option value='' disabled selected>Account Source Number -- Balance</option>
+                    <option value='' disabled selected>Account Source Number | Type | Balance</option>
                     <?php foreach ($accounts as $account) : ?>
-                        <option value="<?php se($account, 'id'); ?>">
-                            <?php se($account, 'account_number');?> -- $<?php se($account, 'balance'); ?>
-                        </option>
+                        <?php if($account["account_type"] != "loan") :?>
+                            <option value="<?php se($account, 'id'); ?>">
+                                <?php se($account, 'account_number');?> | <?php se($account, 'account_type'); ?> | <?php se($account, "balance");?>
+                            </option>
+                        <?php endif; ?>
                     <?php endforeach; ?>
                 <?php endif; ?>
             </select>
@@ -43,7 +45,14 @@
                     <option value='' disabled selected>Account Destination Number -- Balance</option>
                     <?php foreach ($accounts as $account) : ?>
                         <option value="<?php se($account, 'id'); ?>">
-                            <?php se($account, 'account_number');?> -- $<?php se($account, 'balance'); ?>
+                            <?php se($account, 'account_number');?> | <?php se($account, 'account_type'); ?> | $
+                            <?php if($account["account_type"] == "loan"){
+                                    echo ((int)$account["balance"]*-1);
+                                  }
+                                  else {
+                                    se($account, "balance");  
+                                  } 
+                            ?>
                         </option>
                     <?php endforeach; ?>
                 <?php endif; ?>

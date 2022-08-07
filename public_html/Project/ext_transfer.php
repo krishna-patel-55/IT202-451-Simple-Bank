@@ -5,7 +5,8 @@
     $db = getDB();
     $stmt = $db->prepare("SELECT id, account_number, balance
                         FROM Accounts 
-                        WHERE user_id = :user_id");
+                        WHERE user_id = :user_id
+                        AND account_type <> 'loan'");
     $accounts = [];
     try {
         $stmt->execute([":user_id" => $uid]);

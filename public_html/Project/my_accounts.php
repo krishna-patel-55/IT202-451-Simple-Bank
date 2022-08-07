@@ -44,7 +44,19 @@
                             <td><?php se($account, "account_number"); ?></td>
                             <td><?php se($account, "account_type"); ?></td>
                             <td><?php se($account, "modified"); ?></td>
-                            <td>$<?php se($account, "balance"); ?></td>
+                            <td>$<?php if($account["account_type"] == "loan"){
+                                            if($account["balance"] == 0){
+                                                echo ($account["balance"]);
+                                            }
+                                            else{
+                                                echo ($account["balance"]*-1);
+                                            }
+                                        }
+                                        else{
+                                            se($account, "balance");  
+                                        } 
+                                ?>
+                            </td>
                             <td>
                                 <input type="hidden" name="account" value=<?php se($account, 'id'); ?> />
                                 <input class="btn btn-primary" type="submit" name="submit" value="VIEW"/>
