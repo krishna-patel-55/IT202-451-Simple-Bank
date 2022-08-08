@@ -3,7 +3,13 @@
 ## Github Link: [https://github.com/kx5hu/IT202-451/tree/prod/public_html/Project](https://github.com/kx5hu/IT202-451/tree/prod/public_html/Project)
 ## Project Board Link: https://github.com/kx5hu/IT202-451/projects/1
 ## Website Link: https://kp55-prod.herokuapp.com/Project
+
 ## Your Name: Krishna Patel
+## Video Demo: [https://youtu.be/062qMTVLw4c](https://youtu.be/062qMTVLw4c)
+## Milestone 1: [https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone1.md](https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone1.md)
+## Milestone 2: [https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone2.md](https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone2.md)
+## Milestone 3: [https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone3.md](https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone3.md)
+## Milestone 4: [https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone4.md](https://github.com/kx5hu/IT202-451/blob/prod/public_html/Project/milestone4.md)
 
 <!-- Line item / Feature template (use this for each bullet point) -- DO NOT DELETE THIS SECTION
 
