@@ -3,9 +3,9 @@
     is_logged_in(true);
     $uid = get_user_id();
     $db = getDB();
-    $stmt = $db->prepare("SELECT id, account_number, balance
+    $stmt = $db->prepare("SELECT id, account_number, account_type, balance
                         FROM Accounts 
-                        WHERE user_id = :user_id");
+                        WHERE user_id = :user_id AND is_active = true");
     $accounts = [];
     try {
         $stmt->execute([":user_id" => $uid]);
@@ -25,11 +25,13 @@
                 <?php if (empty($accounts)) : ?>
                     <option value='' disabled selected>No Accounts</option>
                 <?php else : ?>
-                    <option value='' disabled selected>Account Source Number -- Balance</option>
+                    <option value='' disabled selected>Account Source Number | Type | Balance</option>
                     <?php foreach ($accounts as $account) : ?>
-                        <option value="<?php se($account, 'id'); ?>">
-                            <?php se($account, 'account_number');?> -- $<?php se($account, 'balance'); ?>
-                        </option>
+                        <?php if($account["account_type"] != "loan") :?>
+                            <option value="<?php se($account, 'id'); ?>">
+                                <?php se($account, 'account_number');?> | <?php se($account, 'account_type'); ?> | $<?php se($account, "balance");?>
+                            </option>
+                        <?php endif; ?>
                     <?php endforeach; ?>
                 <?php endif; ?>
             </select>
@@ -40,10 +42,22 @@
                 <?php if (empty($accounts)) : ?>
                     <option value='' disabled selected>No Accounts</option>
                 <?php else : ?>
-                    <option value='' disabled selected>Account Destination Number -- Balance</option>
+                    <option value='' disabled selected>Account Destination Number | Type | Balance</option>
                     <?php foreach ($accounts as $account) : ?>
                         <option value="<?php se($account, 'id'); ?>">
-                            <?php se($account, 'account_number');?> -- $<?php se($account, 'balance'); ?>
+                            <?php se($account, 'account_number');?> | <?php se($account, 'account_type'); ?> | 
+                            <?php if($account["account_type"] == "loan"){
+                                    if($account["balance"] == 0){
+                                        echo "$";se($account["balance"]);
+                                    }
+                                    else{
+                                        echo "$";se($account["balance"]*-1);
+                                    }
+                                }
+                                  else {
+                                    echo "$";se($account, "balance");  
+                                  } 
+                            ?>
                         </option>
                     <?php endforeach; ?>
                 <?php endif; ?>
@@ -51,7 +65,7 @@
         </div>
         <div class="mb-3">
             <label for="amount">Transfer Amount:</label>
-            <input type="number" class="form-control" name="amount" id="amount" placeholder="minimum $1" min="1" max="&infin">
+            <input type="number" class="form-control" name="amount" id="amount" placeholder="minimum $1" step="0.01" min="1" max="&infin">
         </div>
         <div class="mb-3">
             <label for="memo">Memo: (optional)</label>
@@ -97,6 +111,7 @@
         $amount = se($_POST, "amount", "", false);
         $memo = se($_POST, "memo", "", false);
         $accountSrcBal = get_account_balance($accountSrcID);
+        $accountLoanBalance = get_account_balance($accountDestID);
         //TODO 3: validate/use
         $hasError = false;
         if($accountSrcID == '') {
@@ -118,6 +133,17 @@
         if($amount > $accountSrcBal) {
             flash("Insufficient funds for this transfer amount.");
             $hasError = true;
+        }
+        if($accountLoanBalance == 0){
+            flash("This loan has already been paid off. Please close the account.");
+            $hasError = true;
+        }
+        if($accountLoanBalance < 0 ){
+            $accountLoanBalance = $accountLoanBalance * -1;
+            if($amount > $accountLoanBalance){
+                flash("Please enter the exact loan amount to pay off");
+                $hasError = true;
+            }
         }
         if(!$hasError) {
             try {

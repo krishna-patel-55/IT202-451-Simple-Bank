@@ -148,6 +148,7 @@
             try {
                 $stmt->execute([":email" => $email, ":password" => $hash, ":username" => $username, ":firstname" => $firstname, ":lastname" => $lastname]);
                 flash("Successfully registered!", "success");
+                redirect("login.php");
             } catch (Exception $e) {
                 users_check_duplicate($e->errorInfo);
             }
